@@ -39,6 +39,7 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags = [
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
     "-DCMAKE_PREFIX_PATH=${qt6.qtbase}"
   ];
 
