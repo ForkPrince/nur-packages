@@ -14,7 +14,17 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
+  ab-download-manager = pkgs.callPackage ./pkgs/abdm {};
+  beeper-nightly = pkgs.callPackage ./pkgs/beeper-nightly {};
+  boxtron-bin = pkgs.callPackage ./pkgs/boxtron-bin {};
+  hyprcursor-bibata = pkgs.callPackage ./pkgs/hyprcursor-bibata { };
+  hyprpanel = pkgs.callPackage ./pkgs/hyprpanel { };
+  moonplayer = pkgs.callPackage ./pkgs/moonplayer { };
+  nirius = pkgs.callPackage ./pkgs/nirius { };
+  osu-tachyon = pkgs.callPackage ./pkgs/osu-tachyon {};
+  proton-em-bin = pkgs.callPackage ./pkgs/proton-em-bin {};
+  re-lunatic-player = pkgs.callPackage ./pkgs/re-lunatic-player {};
+  syslock = pkgs.callPackage ./pkgs/syslock {};
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
