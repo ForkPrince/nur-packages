@@ -90,11 +90,13 @@ in
       runHook postInstall
     '';
 
-    meta = with lib; {
+    meta = {
       description = "A Gensokyo Radio player with easy song info, continuing the Lunatic Player project. ";
       homepage = "https://github.com/Prince527GitHub/Re-Lunatic-Player";
-      license = licenses.agpl3Only;
-      maintainers = ["Wam25"];
+      license = lib.licenses.agpl3Only;
+      maintainers = ["Wam25" "Prinky"];
       platforms = ["x86_64-linux"];
+      mainProgram = "re-lunatic-player";
+      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
   }

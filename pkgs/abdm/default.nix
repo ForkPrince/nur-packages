@@ -87,11 +87,13 @@ in
       ];
     };
 
-    meta = with lib; {
+    meta = {
       description = "A Download Manager that speeds up your downloads";
       homepage = "https://abdownloadmanager.com/";
-      license = licenses.asl20;
+      license = lib.licenses.asl20;
       platforms = ["x86_64-linux"];
       maintainers = ["Prinky"];
+      mainProgram = "ab-download-manager";
+      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
   }

@@ -65,7 +65,7 @@ in
       license = lib.licenses.gpl2Only;
       maintainers = ["Prinky"];
       platforms = ["x86_64-linux"];
-      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
       broken = true;
+      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
   }

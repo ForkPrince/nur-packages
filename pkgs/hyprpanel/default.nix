@@ -62,11 +62,13 @@ buildGoModule (finalAttrs: rec {
     ];
   };
 
-  meta = with lib; {
+  meta = {
     description = "An opinionated panel/shell for the Hyprland compositor.";
     homepage = "https://github.com/pdf/hyprpanel";
-    license = licenses.mit;
+    license = lib.licenses.mit;
     maintainers = ["Prinky"];
     platforms = ["x86_64-linux"];
+    mainProgram = "hyprpanel";
+    sourceProvenance = with lib.sourceTypes; [fromSource];
   };
 })
