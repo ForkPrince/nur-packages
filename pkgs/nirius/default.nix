@@ -41,6 +41,7 @@ rustPlatform.buildRustPackage rec {
     license = lib.licenses.gpl3Plus;
     maintainers = ["Prinky"];
     platforms = lib.platforms.linux;
+    mainProgram = "nirius";
     sourceProvenance = with lib.sourceTypes; [fromSource];
   };
 }
