@@ -41,5 +41,6 @@ rustPlatform.buildRustPackage rec {
     license = lib.licenses.gpl3Plus;
     maintainers = ["Prinky"];
     platforms = lib.platforms.linux;
+    sourceProvenance = with lib.sourceTypes; [fromSource];
   };
 }

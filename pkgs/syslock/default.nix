@@ -69,5 +69,6 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.wtfpl;
     maintainers = ["Prinky"];
     platforms = ["x86_64-linux"];
+    sourceProvenance = with lib.sourceTypes; [ fromSource ];
   };
 })

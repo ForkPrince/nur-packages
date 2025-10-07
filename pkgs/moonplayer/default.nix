@@ -50,5 +50,6 @@ stdenv.mkDerivation rec {
     maintainers = ["Prinky"];
     mainProgram = "moonplayer";
     platforms = lib.platforms.linux;
+    sourceProvenance = with lib.sourceTypes; [fromSource];
   };
 }

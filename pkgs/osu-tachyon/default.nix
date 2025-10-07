@@ -45,6 +45,7 @@
       gepbird
       stepbrobd
       Guanran928
+      "Prinky"
     ];
     mainProgram = "osu!";
     platforms = [
