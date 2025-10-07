@@ -12,7 +12,7 @@ rustPlatform.buildRustPackage rec {
     owner = "~tsdh";
     repo = "nirius";
     rev = "${pname}-${version}";
-    hash = "sha256-AfzCsCvqgz8Ff9Fbszt87i2MD/MubLDD1SxsU2be+j4=";
+    hash = "sha256-PzsIEksOp8ZO3f2hGcZ+8X9SvlXKI2oRdi7Nelmlyxk=";
   };
 
   cargoHash = "sha256-fhYjqQ/09tWW1eRmFbya2a1od1Jg3dSfipaCkwYaVAI=";
