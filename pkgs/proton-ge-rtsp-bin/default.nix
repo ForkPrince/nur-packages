@@ -46,7 +46,7 @@ in
 
     meta = {
       description = ''
-        A Development Oriented Compatibility tool for Steam Play based on Wine and additional components
+        Compatibility tool for Steam Play based on Wine and additional components
 
         (This is intended for use in the `programs.steam.extraCompatPackages` option only.)
       '';
