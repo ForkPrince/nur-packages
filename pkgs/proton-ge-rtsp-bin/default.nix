@@ -11,7 +11,7 @@ in
     inherit (info) version;
 
     src = fetchzip {
-      url = "https://github.com/Etaash-mathamsetty/Proton/releases/download/${version}/${version}.tar.gz";
+      url = "https://github.com/${info.repo}/releases/download/${version}/${version}.tar.gz";
       inherit (info) hash;
     };
 
