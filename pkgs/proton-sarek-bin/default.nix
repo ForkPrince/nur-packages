@@ -1,5 +1,5 @@
 {
-  steamDisplayName ? "Proton-EM",
+  steamDisplayName ? "Proton-Sarek",
   stdenvNoCC,
   fetchzip,
   lib,
@@ -7,11 +7,11 @@
   info = builtins.fromJSON (builtins.readFile ./info.json);
 in
   stdenvNoCC.mkDerivation rec {
-    pname = "proton-em-bin";
+    pname = "proton-sarek-bin";
     inherit (info) version;
 
     src = fetchzip {
-      url = "https://github.com/Etaash-mathamsetty/Proton/releases/download/${version}/proton-${version}.tar.xz";
+      url = "https://github.com/${info.repo}/releases/download/${version}/${version}.tar.gz";
       inherit (info) hash;
     };
 
@@ -46,11 +46,11 @@ in
 
     meta = {
       description = ''
-        A Development Oriented Compatibility tool for Steam Play based on Wine and additional components
+        Compatibility tool for Steam Play based on Wine and additional components, with a focus on older PCs
 
         (This is intended for use in the `programs.steam.extraCompatPackages` option only.)
       '';
-      homepage = "https://github.com/Etaash-mathamsetty/Proton";
+      homepage = "https://github.com/pythonlover02/Proton-Sarek";
       license = lib.licenses.bsd3;
       maintainers = ["Prinky"];
       platforms = ["x86_64-linux"];
