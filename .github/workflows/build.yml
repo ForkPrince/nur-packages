@@ -8,6 +8,8 @@ on:
 
 jobs:
   update:
+    if: github.event_name != 'push'
+
     permissions:
       contents: write
 
@@ -43,6 +45,8 @@ jobs:
 
   tests:
     needs: update
+    if: always()
+
     strategy:
       matrix:
         nixPath:
