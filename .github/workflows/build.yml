@@ -71,19 +71,17 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Nix
-        run: |
-          sudo mkdir -p /home/runner/work/nur-packages/nur-packages/nix
-          sudo rsync -aHAXx /nix/ /home/runner/work/nur-packages/nur-packages/nix/
-          sudo mv /nix /nix.old
-          sudo ln -s /home/runner/work/nur-packages/nur-packages/nix /nix
+        run: mkdir -p "$HOME/nix-store"
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - name: Install nix
+        uses: nixbuild/nix-quick-install-action@v34
         with:
-          nix_path: "${{ matrix.nixPath }}"
-          extra_nix_config: |
+          nix_conf: |
+            store = $HOME/nix-store
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set NIX_PATH
+        run: echo "NIX_PATH=${{ matrix.nixPath }}" >> $GITHUB_ENV
 
       - name: Show nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
