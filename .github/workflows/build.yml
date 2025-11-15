@@ -56,16 +56,16 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space
-        uses: insightsengineering/disk-space-reclaimer@v1
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
         with:
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-          swap-storage: false
-          tools-cache: false
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
 
       - name: Checkout repository
         uses: actions/checkout@v5
