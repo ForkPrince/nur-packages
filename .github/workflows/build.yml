@@ -56,19 +56,11 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 512
-          swap-size-mb: 1024
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-codeql: 'true'
-          remove-docker-images: 'true'
-
       - name: Checkout repository
         uses: actions/checkout@v5
+
+      - name: Maximize Space
+        uses: wimpysworld/nothing-but-nix@main
 
       - name: Install nix
         uses: nixbuild/nix-quick-install-action@v34
@@ -78,10 +70,10 @@ jobs:
       - name: Set NIX_PATH
         run: echo "NIX_PATH=${{ matrix.nixPath }}" >> $GITHUB_ENV
 
-      - name: Show nixpkgs version
+      - name: Show Nixpkgs Version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
 
-      - name: Setup cachix
+      - name: Setup Cachix
         uses: cachix/cachix-action@v16
         with:
           name: forkprince
