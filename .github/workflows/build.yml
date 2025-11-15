@@ -70,9 +70,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setup Nix
-        run: mkdir -p "$HOME/nix-store"
-
       - name: Install nix
         uses: nixbuild/nix-quick-install-action@v34
         with:
