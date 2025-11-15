@@ -62,13 +62,13 @@ jobs:
       - name: Maximize Space
         uses: wimpysworld/nothing-but-nix@main
 
-      - name: Install nix
-        uses: nixbuild/nix-quick-install-action@v34
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
-          nix_conf: experimental-features = nix-command flakes
-
-      - name: Set NIX_PATH
-        run: echo "NIX_PATH=${{ matrix.nixPath }}" >> $GITHUB_ENV
+          nix_path: "${{ matrix.nixPath }}"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: Show Nixpkgs Version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
