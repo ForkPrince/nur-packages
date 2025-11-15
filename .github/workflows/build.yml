@@ -70,11 +70,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Install nix
+      - name: Setup Nix
+        run: sudo mkdir -p /home/runner/work/nur-packages/nur-packages/store
+
+      - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
           nix_path: "${{ matrix.nixPath }}"
           extra_nix_config: |
+            store = /home/runner/work/nur-packages/nur-packages/store
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
