@@ -76,9 +76,7 @@ jobs:
       - name: Install nix
         uses: nixbuild/nix-quick-install-action@v34
         with:
-          nix_conf: |
-            store = $HOME/nix-store
-            experimental-features = nix-command flakes
+          nix_conf: experimental-features = nix-command flakes
 
       - name: Set NIX_PATH
         run: echo "NIX_PATH=${{ matrix.nixPath }}" >> $GITHUB_ENV
