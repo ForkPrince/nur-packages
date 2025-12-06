@@ -22,9 +22,6 @@
   pciutils,
   systemd,
   libdrm,
-  libgbm,
-  libva,
-  mesa,
   libXfixes,
   libXrandr,
   libxcb,
@@ -112,11 +109,6 @@ in
       pciutils
       systemd
       libdrm
-      libgbm
-      libva
-      mesa
-      mesa.drivers
-      mesa.vaapi
       libXfixes
       libXrandr
       libxcb
@@ -148,10 +140,7 @@ in
 
       makeWrapper $out/opt/waterfox/waterfox-bin $out/bin/waterfox \
         --set GTK_IM_MODULE gtk-im-context-simple \
-        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}" \
-        --prefix LIBVA_DRIVERS_PATH : "${lib.makeLibraryPath [ mesa.vaapi ]}" \
-        --prefix LIBGL_DRIVERS_PATH : "${lib.makeLibraryPath [ mesa.drivers ]}" \
-        --prefix GBM_BACKENDS_PATH : "${lib.makeLibraryPath [ libgbm ]}"
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}"
 
       cp ${desktopItem}/share/applications/* $out/share/applications/
 
