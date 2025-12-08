@@ -15,7 +15,7 @@ in
     inherit (info) version;
 
     src = fetchzip {
-      url = "https://github.com/${info.repo}/releases/download/${version}/${platform.file}";
+      url = "https://github.com/${info.repo}/releases/download/${version}/${builtins.replaceStrings ["{version}"] [version] platform.file}";
       inherit (platform) hash;
     };
 
