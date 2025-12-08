@@ -1,5 +1,5 @@
 {
-  wrapGAppsHook3,
+  wrapGAppsHook,
   makeDesktopItem,
   libappindicator,
   at-spi2-core,
@@ -84,7 +84,7 @@ in
     };
 
     nativeBuildInputs = [
-      wrapGAppsHook3
+      wrapGAppsHook
       patchelf
       makeWrapper
       unzip
