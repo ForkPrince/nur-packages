@@ -22,7 +22,7 @@
     },
     "v4": {
       "file": "proton-{version}-x86_64_v4.tar.xz",
-      "hash": "sha256-FfAk16TlhaXeBauCxAYTcI2pEg9FCE1QDIkxuiP7zSg=",
+      "hash": "sha256-wSPVOnGyEej4RMIBUnQ6aj1n3KiZ8ftNq/hpa4+1Q/8=",
       "unpack": true
     }
   }
