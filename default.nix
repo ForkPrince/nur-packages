@@ -30,8 +30,8 @@
   proton-sarek-bin = pkgs.callPackage ./pkgs/proton-sarek-bin {};
   proton-ge-rtsp-bin = pkgs.callPackage ./pkgs/proton-ge-rtsp-bin {};
 
-  proton-cachyos-v1-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v1" };
-  proton-cachyos-v2-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v2" };
-  proton-cachyos-v3-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v3" };
-  proton-cachyos-v4-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v4" };
+  proton-cachyos-v1-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v1"; };
+  proton-cachyos-v2-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v2"; };
+  proton-cachyos-v3-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v3"; };
+  proton-cachyos-v4-bin = pkgs.callPackage ./pkgs/proton-cachyos-bin { type = "v4"; };
 }
