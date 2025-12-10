@@ -3,6 +3,9 @@
   fetchurl,
   pkgs,
   lib,
+  stdenv,
+  undmg,
+  _7zz,
   ...
 }: let
   info = builtins.fromJSON (builtins.readFile ./info.json);
@@ -12,7 +15,52 @@
   platform = lib.getAttr pkgs.stdenv.hostPlatform.system info.platforms;
 
   filename = lib.replaceStrings ["{version}"] [version] platform.file;
+  
+  isDarwin = lib.hasSuffix "-darwin" pkgs.stdenv.hostPlatform.system;
 in
+(if isDarwin then
+  stdenv.mkDerivation {
+    pname = "helium";
+
+    inherit version;
+
+    src = fetchurl {
+      inherit (platform) hash;
+      url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
+    };
+
+    # Platform-specific extraction method
+    nativeBuildInputs = [ pkgs._7zz ];
+
+    sourceRoot = ".";
+
+    # Use unpackCmd for cleaner DMG extraction (nixpkgs best practice)
+    unpackCmd = "${pkgs._7zz}/bin/7zz x -snld $curSrc";
+
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/Applications
+      cp -r *.app $out/Applications/
+
+      mkdir -p $out/bin
+      ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
+
+      runHook postInstall
+    '';
+
+    meta = {
+      description = "Private, fast, and honest web browser (nightly builds)";
+      homepage = "https://github.com/imputnet/helium";
+      changelog = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/tag/${version}";
+      license = lib.licenses.gpl3;
+      maintainers = ["Ev357" "Prinky"];
+      platforms = ["x86_64-darwin" "aarch64-darwin"];
+      mainProgram = "helium";
+      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
+    };
+  }
+else
   appimageTools.wrapType2 rec {
     pname = "helium";
 
@@ -20,7 +68,7 @@ in
 
     src = fetchurl {
       inherit (platform) hash;
-      url = "https://github.com/${info.repo}/releases/download/${info.version}/${filename}";
+      url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
     };
 
     extraInstallCommands = let
@@ -37,12 +85,12 @@ in
 
     meta = {
       description = "Private, fast, and honest web browser (nightly builds)";
-      homepage = "https://github.com/imputnet/${pname}";
-      changelog = "https://github.com/${info.repo}/releases/tag/${version}";
+      homepage = "https://github.com/imputnet/helium";
+      changelog = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/tag/${version}";
       license = lib.licenses.gpl3;
       maintainers = ["Ev357" "Prinky"];
       platforms = ["x86_64-linux" "aarch64-linux"];
-      mainProgram = pname;
+      mainProgram = "helium";
       sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
-  }
+  })
