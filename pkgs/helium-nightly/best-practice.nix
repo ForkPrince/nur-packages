@@ -1,3 +1,4 @@
+# This is the "best practice" approach following nixpkgs conventions
 {
   appimageTools,
   fetchurl,
@@ -5,7 +6,6 @@
   lib,
   stdenv,
   undmg,
-  _7zz,
   ...
 }: let
   info = builtins.fromJSON (builtins.readFile ./info.json);
@@ -17,6 +17,10 @@
   filename = lib.replaceStrings ["{version}"] [version] platform.file;
   
   isDarwin = lib.hasSuffix "-darwin" pkgs.stdenv.hostPlatform.system;
+  
+  # Check DMG type to determine extraction method
+  # Try undmg first (standard), fallback to _7zz for modern DMGs
+  use7zz = isDarwin; # We know Helium uses modern DMGs
 in
 (if isDarwin then
   stdenv.mkDerivation {
@@ -29,22 +33,28 @@ in
       url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
     };
 
-    # Check what extraction method works
-    nativeBuildInputs = [ undmg ];
+    # Platform-specific extraction method
+    nativeBuildInputs = if use7zz then [ pkgs._7zz ] else [ undmg ];
 
-  sourceRoot = ".";
+    sourceRoot = ".";
 
-  installPhase = ''
-    runHook preInstall
+    # Use the standard unpackCmd approach - cleaner than custom unpackPhase
+    unpackCmd = if use7zz then 
+      "${pkgs._7zz}/bin/7zz x -snld $curSrc"
+    else
+      "undmg $curSrc";
 
-    mkdir -p $out/Applications
-    cp -r *.app $out/Applications/
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/bin
-    ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
+      mkdir -p $out/Applications
+      cp -r *.app $out/Applications/
 
-    runHook postInstall
-  '';
+      mkdir -p $out/bin
+      ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
+
+      runHook postInstall
+    '';
 
     meta = {
       description = "Private, fast, and honest web browser (nightly builds)";
