@@ -30,11 +30,24 @@ if [[ -n "${GITHUB_TOKEN:-}" ]]; then
 fi
 
 update_github() {
-  local repo query version oldVersion releases rawVersion
+  local repo query version oldVersion releases rawVersion repos
 
-  repo=$(jq -r '.repo // empty' <<< "$config")
+  # Check if we have repos object or repo string
+  if jq -e '.repos' <<< "$config" > /dev/null; then
+    repos=$(jq -r '.repos' <<< "$config")
+    # For multi-repo setup, we'll handle this in multiplatform function
+    repo="multi-repo"
+  else
+    repo=$(jq -r '.repo // empty' <<< "$config")
+  fi
+  
   query=$(jq -r '.query // empty' <<< "$config")
   oldVersion=$(jq -r '.version // empty' <<< "$config")
+
+  # For multi-repo setup, use the first repo for version checking
+  if [[ "$repo" == "multi-repo" ]]; then
+    repo=$(jq -r '.repos | to_entries | first | .value' <<< "$config")
+  fi
 
   if [[ -z "$repo" ]]; then
     echo "⚠️ Error: 'repo' must be set for GitHub updates"
@@ -112,12 +125,11 @@ update_github_single() {
   echo "✅ Updated version and hash"
 }
 
-# TODO: Add support for multi-version multi-platform updates
 update_github_multiplatform() {
   local repo="$1"
   local rawVersion="$2"
   local version="$3"
-  local tmp newInfo
+  local tmp newInfo platform_repo
 
   tmp=$(mktemp)
   newInfo=$(mktemp)
@@ -134,7 +146,14 @@ update_github_multiplatform() {
 
     file="${file//\{version\}/$version}"
 
-    url="https://github.com/${repo}/releases/download/${rawVersion}/${file}"
+    # Check if we have a repos object, otherwise use the main repo
+    if jq -e '.repos' <<< "$config" > /dev/null; then
+      platform_repo=$(jq -r --arg p "$platform" '.repos[$p]' <<< "$config")
+    else
+      platform_repo="$repo"
+    fi
+
+    url="https://github.com/${platform_repo}/releases/download/${rawVersion}/${file}"
     echo "⬇️ Fetching $platform: $url"
 
     prefetch_cmd=(nix store prefetch-file "$url" --json)
