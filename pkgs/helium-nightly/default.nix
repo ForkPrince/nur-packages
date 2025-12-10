@@ -29,22 +29,25 @@ in
       url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
     };
 
-    # Check what extraction method works
-    nativeBuildInputs = [ undmg ];
+    # Platform-specific extraction method
+    nativeBuildInputs = [ pkgs._7zz ];
 
-  sourceRoot = ".";
+    sourceRoot = ".";
 
-  installPhase = ''
-    runHook preInstall
+    # Use unpackCmd for cleaner DMG extraction (nixpkgs best practice)
+    unpackCmd = "${pkgs._7zz}/bin/7zz x -snld $curSrc";
 
-    mkdir -p $out/Applications
-    cp -r *.app $out/Applications/
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/bin
-    ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
+      mkdir -p $out/Applications
+      cp -r *.app $out/Applications/
 
-    runHook postInstall
-  '';
+      mkdir -p $out/bin
+      ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
+
+      runHook postInstall
+    '';
 
     meta = {
       description = "Private, fast, and honest web browser (nightly builds)";
