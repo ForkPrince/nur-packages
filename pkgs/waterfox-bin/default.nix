@@ -44,7 +44,7 @@
   nss,
   lib,
 }: let
-  info = builtins.fromJSON (builtins.readFile ./info.json);
+  ver = lib.helper.read ./version.json;
 
   desktopItem = makeDesktopItem {
     name = "waterfox";
@@ -76,12 +76,9 @@
 in
   stdenv.mkDerivation rec {
     pname = "waterfox-bin";
-    inherit (info) version;
+    inherit (ver) version;
 
-    src = fetchurl {
-      url = "https://cdn1.waterfox.net/waterfox/releases/${version}/Linux_x86_64/waterfox-${version}.tar.bz2";
-      inherit (info) hash;
-    };
+    src = fetchurl (lib.helper.getSingle ver);
 
     nativeBuildInputs = [
       wrapGAppsHook3
