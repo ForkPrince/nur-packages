@@ -18,16 +18,13 @@
   glib,
   lib,
 }: let
-  info = builtins.fromJSON (builtins.readFile ./info.json);
+  ver = lib.helper.read ./version.json;
 in
   stdenv.mkDerivation rec {
     pname = "ab-download-manager";
-    inherit (info) version;
+    inherit (ver) version;
 
-    src = fetchurl {
-      url = "https://github.com/amir1376/ab-download-manager/releases/download/v${version}/ABDownloadManager_${version}_linux_x64.tar.gz";
-      inherit (info) hash;
-    };
+    src = fetchurl (lib.helper.getSingle ver);
 
     nativeBuildInputs = [
       autoPatchelfHook
