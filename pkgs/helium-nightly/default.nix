@@ -17,8 +17,8 @@
 
   meta = {
     description = "Private, fast, and honest web browser (nightly builds)";
-    homepage = "https://github.com/imputnet/helium-linux";
-    changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
+    homepage = "https://github.com/imputnet/helium";
+    changelog = "https://github.com/imputnet/helium/releases/tag/${version}";
     license = lib.licenses.gpl3;
     maintainers = ["Ev357" "Prinky"];
     platforms = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
