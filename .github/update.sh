@@ -140,7 +140,6 @@ update_single() {
 
   url="${url//\{repo\}/$repo}"
   url="${url//\{version\}/$rawVersion}"
-  url="${url//\{version_clean\}/$version}"
 
   echo "⬇️  Downloading $url"
 

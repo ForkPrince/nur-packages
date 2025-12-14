@@ -6,7 +6,7 @@
     "query": ".[0].tag_name"
   },
   "asset": {
-    "url": "https://github.com/{repo}/releases/download/{version}/re-lunatic-player-linux-x64-{version_clean}.tar.gz",
+    "url": "https://github.com/{repo}/releases/download/v{version}/re-lunatic-player-linux-x64-{version}.tar.gz",
     "unpack": true
   },
   "version": "1.1.0",
