@@ -5,29 +5,22 @@
   lib,
   ...
 }: let
-  info = builtins.fromJSON (builtins.readFile ./info.json);
+  ver = lib.helper.read ./version.json;
+  platform = pkgs.stdenv.hostPlatform.system;
 
-  inherit (info) version;
+  pname = "helium";
+  src = fetchurl (lib.helper.getPlatform platform ver);
 
-  platform = lib.getAttr pkgs.stdenv.hostPlatform.system info.platforms;
-
-  filename = lib.replaceStrings ["{version}"] [version] platform.file;
+  inherit (ver) version;
 in
-  appimageTools.wrapType2 rec {
-    pname = "helium";
-
-    inherit version;
-
-    src = fetchurl {
-      inherit (platform) hash;
-      url = "https://github.com/${info.repo}/releases/download/${info.version}/${filename}";
-    };
+  appimageTools.wrapType2 {
+    inherit pname version src;
 
     extraInstallCommands = let
       contents = appimageTools.extract {inherit pname version src;};
     in ''
       install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
-      substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
+      substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=helium'
 
       cp -r ${contents}/usr/share/* $out/share/
 
@@ -37,12 +30,12 @@ in
 
     meta = {
       description = "Private, fast, and honest web browser (nightly builds)";
-      homepage = "https://github.com/imputnet/${pname}";
-      changelog = "https://github.com/${info.repo}/releases/tag/${version}";
+      homepage = "https://github.com/imputnet/helium-linux";
+      changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
       license = lib.licenses.gpl3;
       maintainers = ["Ev357" "Prinky"];
       platforms = ["x86_64-linux" "aarch64-linux"];
-      mainProgram = pname;
+      mainProgram = "helium";
       sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     };
   }
