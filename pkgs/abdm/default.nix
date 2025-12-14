@@ -1,21 +1,19 @@
 {
-  copyDesktopItems,
   autoPatchelfHook,
-  makeDesktopItem,
+  copyDesktopItems,
   libappindicator,
+  makeDesktopItem,
   makeWrapper,
   fontconfig,
-  alsa-lib,
   fetchurl,
+  alsa-lib,
   wayland,
-  libXext,
-  libXtst,
-  libX11,
   stdenv,
   libGL,
-  zlib,
-  gtk3,
   glib,
+  gtk3,
+  xorg,
+  zlib,
   lib,
 }: let
   ver = lib.helper.read ./version.json;
@@ -33,16 +31,16 @@ in
     ];
     buildInputs = [
       libappindicator
+      xorg.libXtst
+      xorg.libXext
+      xorg.libX11
       fontconfig
       alsa-lib
       wayland
-      libXext
-      libXtst
-      libX11
       libGL
-      zlib
-      gtk3
       glib
+      gtk3
+      zlib
     ];
 
     sourceRoot = ".";
