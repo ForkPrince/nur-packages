@@ -6,8 +6,8 @@
       tmpl = ver.asset.url or ver.asset.url_template;
     in
       builtins.replaceStrings
-      ["{repo}" "{version}" "{version_clean}"]
-      [(ver.source.repo or "") ver.version ver.version]
+      ["{repo}" "{version}"]
+      [(ver.source.repo or "") ver.version]
       tmpl;
     inherit (ver) hash;
   };

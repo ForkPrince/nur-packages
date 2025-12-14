@@ -6,7 +6,7 @@
     "query": ".[0].tag_name"
   },
   "asset": {
-    "url": "https://github.com/{repo}/releases/download/{version}/ABDownloadManager_{version_clean}_linux_x64.tar.gz",
+    "url": "https://github.com/{repo}/releases/download/v{version}/ABDownloadManager_1.7.1_linux_x64.tar.gz",
     "unpack": false
   },
   "version": "1.7.1",
