@@ -1,6 +1,8 @@
 {
   appimageTools,
+  stdenvNoCC,
   fetchurl,
+  undmg,
   pkgs,
   lib,
   ...
@@ -12,30 +14,47 @@
   src = fetchurl (lib.helper.getPlatform platform ver);
 
   inherit (ver) version;
+
+  meta = {
+    description = "Private, fast, and honest web browser (nightly builds)";
+    homepage = "https://github.com/imputnet/helium-linux";
+    changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
+    license = lib.licenses.gpl3;
+    maintainers = ["Ev357" "Prinky"];
+    platforms = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    mainProgram = "helium";
+    sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
+  };
 in
-  appimageTools.wrapType2 {
-    inherit pname version src;
+  if stdenvNoCC.isDarwin
+  then
+    stdenvNoCC.mkDerivation {
+      inherit pname version src meta;
 
-    extraInstallCommands = let
-      contents = appimageTools.extract {inherit pname version src;};
-    in ''
-      install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
-      substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=helium'
+      nativeBuildInputs = [undmg];
 
-      cp -r ${contents}/usr/share/* $out/share/
+      sourceRoot = ".";
 
-      install -d $out/share/lib/${pname}
-      cp -r ${contents}/opt/${pname}/locales $out/share/lib/${pname}/
-    '';
+      installPhase = ''
+        runHook preInstall
+        mkdir -p $out/Applications
+        cp -r Helium.app $out/Applications/
+        runHook postInstall
+      '';
+    }
+  else
+    appimageTools.wrapType2 {
+      inherit pname version src meta;
 
-    meta = {
-      description = "Private, fast, and honest web browser (nightly builds)";
-      homepage = "https://github.com/imputnet/helium-linux";
-      changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
-      license = lib.licenses.gpl3;
-      maintainers = ["Ev357" "Prinky"];
-      platforms = ["x86_64-linux" "aarch64-linux"];
-      mainProgram = "helium";
-      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
-    };
-  }
+      extraInstallCommands = let
+        contents = appimageTools.extract {inherit pname version src;};
+      in ''
+        install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
+        substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
+
+        cp -r ${contents}/usr/share/* $out/share/
+
+        install -d $out/share/lib/${pname}
+        cp -r ${contents}/opt/${pname}/locales $out/share/lib/${pname}/
+      '';
+    }
