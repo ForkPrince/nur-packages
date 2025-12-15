@@ -1,96 +1,63 @@
 {
   appimageTools,
+  stdenvNoCC,
   fetchurl,
+  _7zz,
   pkgs,
   lib,
-  stdenv,
-  undmg,
-  _7zz,
   ...
 }: let
-  info = builtins.fromJSON (builtins.readFile ./info.json);
+  ver = lib.helper.read ./version.json;
+  platform = pkgs.stdenv.hostPlatform.system;
 
-  inherit (info) version;
+  pname = "helium";
+  src = fetchurl (lib.helper.getPlatform platform ver);
 
-  platform = lib.getAttr pkgs.stdenv.hostPlatform.system info.platforms;
+  inherit (ver) version;
 
-  filename = lib.replaceStrings ["{version}"] [version] platform.file;
-  
-  isDarwin = lib.hasSuffix "-darwin" pkgs.stdenv.hostPlatform.system;
+  meta = {
+    description = "Private, fast, and honest web browser (nightly builds)";
+    homepage = "https://github.com/imputnet/helium";
+    changelog = "https://github.com/imputnet/helium/releases/tag/${version}";
+    license = lib.licenses.gpl3;
+    maintainers = ["Ev357" "Prinky"];
+    platforms = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    mainProgram = "helium";
+    sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
+  };
 in
-(if isDarwin then
-  stdenv.mkDerivation {
-    pname = "helium";
+  if stdenvNoCC.isDarwin
+  then
+    stdenvNoCC.mkDerivation {
+      inherit pname version src meta;
 
-    inherit version;
+      nativeBuildInputs = [_7zz];
 
-    src = fetchurl {
-      inherit (platform) hash;
-      url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
-    };
+      sourceRoot = ".";
 
-    # Platform-specific extraction method
-    nativeBuildInputs = [ pkgs._7zz ];
+      dontBuild = true;
+      dontFixup = true;
 
-    sourceRoot = ".";
+      installPhase = ''
+        runHook preInstall
+        mkdir -p $out/Applications
+        cp -r Helium.app $out/Applications/
+        runHook postInstall
+      '';
+    }
+  else
+    appimageTools.wrapType2 {
+      inherit pname version src meta;
 
-    # Use unpackCmd for cleaner DMG extraction (nixpkgs best practice)
-    unpackCmd = "${pkgs._7zz}/bin/7zz x -snld $curSrc";
+      extraInstallCommands = let
+        contents = appimageTools.extract {inherit pname version src;};
+      in ''
+        install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
+        substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
 
-    installPhase = ''
-      runHook preInstall
+        cp -r ${contents}/usr/share/* $out/share/
 
-      mkdir -p $out/Applications
-      cp -r *.app $out/Applications/
-
-      mkdir -p $out/bin
-      ln -s $out/Applications/Helium.app/Contents/MacOS/Helium $out/bin/helium
-
-      runHook postInstall
-    '';
-
-    meta = {
-      description = "Private, fast, and honest web browser (nightly builds)";
-      homepage = "https://github.com/imputnet/helium";
-      changelog = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/tag/${version}";
-      license = lib.licenses.gpl3;
-      maintainers = ["Ev357" "Prinky"];
-      platforms = ["x86_64-darwin" "aarch64-darwin"];
-      mainProgram = "helium";
-      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
-    };
-  }
-else
-  appimageTools.wrapType2 rec {
-    pname = "helium";
-
-    inherit version;
-
-    src = fetchurl {
-      inherit (platform) hash;
-      url = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/download/${info.version}/${filename}";
-    };
-
-    extraInstallCommands = let
-      contents = appimageTools.extract {inherit pname version src;};
-    in ''
-      install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
-      substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
-
-      cp -r ${contents}/usr/share/* $out/share/
-
-      install -d $out/share/lib/${pname}
-      cp -r ${contents}/opt/${pname}/locales $out/share/lib/${pname}/
-    '';
-
-    meta = {
-      description = "Private, fast, and honest web browser (nightly builds)";
-      homepage = "https://github.com/imputnet/helium";
-      changelog = "https://github.com/${lib.getAttr pkgs.stdenv.hostPlatform.system info.repos}/releases/tag/${version}";
-      license = lib.licenses.gpl3;
-      maintainers = ["Ev357" "Prinky"];
-      platforms = ["x86_64-linux" "aarch64-linux"];
-      mainProgram = "helium";
-      sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
-    };
-  })
+        install -d $out/share/lib/${pname}
+        cp -r ${contents}/opt/${pname}/locales $out/share/lib/${pname}/
+      '';
+    }
