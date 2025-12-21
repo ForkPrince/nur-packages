@@ -5,6 +5,22 @@ set -euo pipefail
 # Supports GitHub releases and custom API endpoints
 # Usage: ./update.sh [--force] <version.json>
 
+url_encode() {
+  local string="$1"
+  local encoded=""
+  local pos c o
+  
+  for ((pos=0; pos<${#string}; pos++)); do
+    c=${string:$pos:1}
+    case "$c" in
+      [-_.~a-zA-Z0-9:/]) o="$c" ;;
+      *) printf -v o '%%%02X' "'$c" ;;
+    esac
+    encoded+="$o"
+  done
+  echo "$encoded"
+}
+
 force_hash=false
 if [[ "${1:-}" == "--force" ]]; then
   force_hash=true
@@ -311,6 +327,19 @@ update_variants() {
 update_api() {
   local api_url response version_path url_path rawVersion newVersion newUrl oldVersion tmp hash
 
+  oldVersion=$(jq -r '.version // empty' <<< "$config")
+
+  if jq -e '.platforms' <<< "$config" > /dev/null; then
+    update_api_platforms "$oldVersion"
+  else
+    update_api_single "$oldVersion"
+  fi
+}
+
+update_api_single() {
+  local oldVersion="$1"
+  local api_url response version_path url_path rawVersion newVersion newUrl tmp hash
+
   api_url=$(jq -r '.source.url // empty' <<< "$config")
   
   if [[ -z "$api_url" ]]; then
@@ -336,7 +365,6 @@ update_api() {
   fi
 
   newVersion="${rawVersion#v}"
-  oldVersion=$(jq -r '.version // empty' <<< "$config")
 
   echo "📌 Latest version: $newVersion"
 
@@ -354,7 +382,10 @@ update_api() {
   echo "⬇️  Downloading $newUrl"
 
   tmp=$(mktemp)
-  if ! nix store prefetch-file "$newUrl" --json > "$tmp"; then
+  local encoded_url filename
+  encoded_url=$(url_encode "$newUrl")
+  filename=$(basename "$newUrl" | sed 's/%20/-/g; s/ /-/g')
+  if ! nix store prefetch-file "$encoded_url" --name "$filename" --json > "$tmp"; then
     echo "⚠️ Error: Failed to prefetch file" >&2
     rm -f "$tmp"
     exit 1
@@ -372,6 +403,97 @@ update_api() {
 
   mv "${version_file}.tmp" "$version_file"
   echo "✅ Updated to version $newVersion"
+}
+
+update_api_platforms() {
+  local oldVersion="$1"
+  local base_api_url version_path url_path newVersion tmp hash
+
+  base_api_url=$(jq -r '.source.url // empty' <<< "$config")
+  version_path=$(jq -r '.source.version_path // ".version"' <<< "$config")
+  url_path=$(jq -r '.source.url_path // ".url"' <<< "$config")
+
+  if [[ -z "$base_api_url" ]]; then
+    echo "⚠️ Error: 'source.url' is required for API updates" >&2
+    exit 1
+  fi
+
+  tmp=$(mktemp)
+  echo "🔄 Processing API platforms..."
+
+  local platforms=()
+  while IFS= read -r platform; do
+    platforms+=("$platform")
+  done < <(jq -r '.platforms | keys[]' <<< "$config")
+
+  local first_platform=true
+  for platform in "${platforms[@]}"; do
+    local api_url="$base_api_url"
+    local response rawVersion newUrl
+
+    if jq -e --arg p "$platform" '.platforms[$p].substitutions' <<< "$config" > /dev/null; then
+      local i=0
+      while IFS= read -r sub; do
+        api_url="${api_url//\{$i\}/$sub}"
+        i=$((i + 1))
+      done < <(jq -r --arg p "$platform" '.platforms[$p].substitutions[]' <<< "$config")
+    fi
+
+    echo "   [$platform] Fetching from API..."
+    if ! response=$(curl -fsSL "$api_url"); then
+      echo "⚠️ Error: Failed to fetch from API endpoint for $platform" >&2
+      continue
+    fi
+
+    rawVersion=$(jq -r "$version_path" <<< "$response")
+    newUrl=$(jq -r "$url_path" <<< "$response")
+
+    if [[ -z "$rawVersion" || -z "$newUrl" || "$rawVersion" == "null" || "$newUrl" == "null" ]]; then
+      echo "⚠️ Error: Failed to extract version or URL from API response for $platform" >&2
+      continue
+    fi
+
+    if [[ "$first_platform" == "true" ]]; then
+      newVersion="${rawVersion#v}"
+      echo "📌 Latest version: $newVersion"
+
+      if [[ "$newVersion" == "$oldVersion" ]]; then
+        if [[ "$force_hash" == "false" ]]; then
+          echo "✅ Version is up to date"
+          rm -f "$tmp"
+          exit 0
+        else
+          echo "🔄 Forcing hash update"
+        fi
+      else
+        echo "⬆️ Update: $oldVersion → $newVersion"
+      fi
+      first_platform=false
+    fi
+
+    echo "   [$platform] Downloading $newUrl"
+
+    local encoded_url filename
+    encoded_url=$(url_encode "$newUrl")
+    filename=$(basename "$newUrl" | sed 's/%20/-/g; s/ /-/g')
+    if ! nix store prefetch-file "$encoded_url" --name "$filename" --json > "$tmp"; then
+      echo "⚠️ Error: Failed to prefetch file for $platform" >&2
+      continue
+    fi
+
+    hash=$(jq -r '.hash' "$tmp")
+
+    jq --arg p "$platform" --arg url "$newUrl" --arg h "$hash" '
+      .platforms[$p].url = $url | .platforms[$p].hash = $h
+    ' "$version_file" > "${version_file}.tmp"
+    mv "${version_file}.tmp" "$version_file"
+  done
+
+  jq --arg v "$newVersion" '.version = $v' "$version_file" > "${version_file}.tmp"
+  mv "${version_file}.tmp" "$version_file"
+
+  rm -f "$tmp"
+  echo "✅ Updated ${#platforms[@]} platforms to version $newVersion"
 }
 
 case "$source_type" in
