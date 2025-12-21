@@ -1,6 +1,12 @@
 {lib}: let
   githubUrl = repo: tagPrefix: version: file: "https://github.com/${repo}/releases/download/${tagPrefix}${version}/${file}";
 
+  sanitizeName = name:
+    builtins.replaceStrings
+    [" " "%20"]
+    ["-" "-"]
+    name;
+
   applySubstitutions = subs: let
     applySubs = t: idx:
       if idx >= builtins.length subs
@@ -74,6 +80,18 @@ in {
 
   getApi = ver: {
     inherit (ver.asset) url hash;
+  };
+
+  getApiPlatform = platform: ver: let
+    plat = lib.getAttr platform ver.platforms;
+    url = plat.url;
+
+    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
+    filename = baseNameOf urlPath;
+    name = sanitizeName filename;
+  in {
+    inherit url name;
+    inherit (plat) hash;
   };
 
   unpack = ver: ver.asset.unpack or false;
