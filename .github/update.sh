@@ -133,7 +133,7 @@ update_single() {
 
   if [[ -n "$file" && "$file" != "null" ]]; then
     file="${file//\{version\}/$version}"
-    url="https://github.com/${repo}/releases/download/${tag_prefix}${rawVersion}/${file}"
+    url="https://github.com/${repo}/releases/download/${tag_prefix}${version}/${file}"
   else
     url=$(jq -r '.asset.url // empty' <<< "$config")
     if [[ -z "$url" || "$url" == "null" ]]; then
@@ -214,7 +214,7 @@ update_platforms() {
       file="${file//\{version\}/$version}"
       local tag_prefix
       tag_prefix=$(jq -r --arg p "$platform" '.platforms[$p].tag_prefix // .source.tag_prefix // empty' <<< "$config")
-      url="https://github.com/${platform_repo}/releases/download/${tag_prefix}${platform_raw_version}/${file}"
+      url="https://github.com/${platform_repo}/releases/download/${tag_prefix}${version}/${file}"
     else
       echo "⚠️ Error: 'file' is required for platform '$platform'" >&2
       exit 1
