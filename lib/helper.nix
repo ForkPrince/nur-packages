@@ -13,6 +13,19 @@
     ["%20"]
     url;
 
+  extractName = url:
+    sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+
+  substitute = {
+    version,
+    repo ? "",
+    template,
+  }:
+    builtins.replaceStrings
+    ["{version}" "{repo}"]
+    [version repo]
+    template;
+
   applySubstitutions = subs: let
     applySubs = t: idx:
       if idx >= builtins.length subs
@@ -37,14 +50,18 @@ in {
         ver.source.repo
         (ver.source.tag_prefix or "")
         ver.version
-        (builtins.replaceStrings ["{version}"] [ver.version] ver.asset.file)
+        (substitute {
+          version = ver.version;
+          template = ver.asset.file;
+        })
       else
-        builtins.replaceStrings
-        ["{repo}" "{version}"]
-        [(ver.source.repo or "") ver.version]
-        ver.asset.url;
+        substitute {
+          version = ver.version;
+          repo = ver.source.repo or "";
+          template = ver.asset.url;
+        };
 
-    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+    name = extractName url;
   in {
     inherit url name;
     inherit (ver) hash;
@@ -56,15 +73,22 @@ in {
   in
     if hasCustomUrl
     then let
-      rawUrl = builtins.replaceStrings ["{version}" "{repo}"] [ver.version (plat.repo or ver.source.repo or "")] plat.url;
+      rawUrl = substitute {
+        version = ver.version;
+        repo = plat.repo or ver.source.repo or "";
+        template = plat.url;
+      };
       url = sanitizeUrl rawUrl;
-      name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+      name = extractName url;
     in {
       inherit url name;
       inherit (plat) hash;
     }
     else let
-      file = builtins.replaceStrings ["{version}"] [ver.version] plat.file;
+      file = substitute {
+        version = ver.version;
+        template = plat.file;
+      };
     in {
       url =
         githubUrl
@@ -88,15 +112,19 @@ in {
         ver.source.repo
         (ver.source.tag_prefix or "")
         ver.version
-        (builtins.replaceStrings ["{version}"] [ver.version] ver.asset.file)
+        (substitute {
+          version = ver.version;
+          template = ver.asset.file;
+        })
       else
-        builtins.replaceStrings
-        ["{repo}" "{version}"]
-        [ver.source.repo ver.version]
-        ver.asset.url;
+        substitute {
+          version = ver.version;
+          repo = ver.source.repo;
+          template = ver.asset.url;
+        };
 
     url = applySubstitutions vari.substitutions baseUrl 0;
-    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+    name = extractName url;
   in {
     inherit url name;
     inherit (vari) hash;
@@ -104,7 +132,7 @@ in {
 
   getApi = ver: let
     url = sanitizeUrl ver.asset.url;
-    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+    name = extractName url;
   in {
     inherit url name;
     inherit (ver.asset) hash;
@@ -113,7 +141,7 @@ in {
   getApiPlatform = platform: ver: let
     plat = lib.getAttr platform ver.platforms;
     url = sanitizeUrl plat.url;
-    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+    name = extractName url;
   in {
     inherit url name;
     inherit (plat) hash;
