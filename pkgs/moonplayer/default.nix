@@ -13,11 +13,10 @@
   lib,
 }: let
   ver = lib.helper.read ./version.json;
-  platform = stdenv.hostPlatform.system;
 
   pname = "moonplayer";
 
-  baseMeta = {
+  base = {
     description = "Video player that can play online videos from YouTube, Bilibili etc";
     homepage = "https://github.com/coslyk/moonplayer";
     license = lib.licenses.gpl3Only;
@@ -33,12 +32,12 @@ in
       inherit (ver) version;
 
       meta =
-        baseMeta
+        base
         // {
           sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
         };
 
-      src = fetchurl (lib.helper.getApiPlatform platform ver);
+      src = fetchurl (lib.helper.getSingle ver);
 
       nativeBuildInputs = [unzip];
 
@@ -59,7 +58,7 @@ in
       inherit pname;
 
       meta =
-        baseMeta
+        base
         // {
           sourceProvenance = with lib.sourceTypes; [fromSource];
         };
