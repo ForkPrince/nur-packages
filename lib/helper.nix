@@ -37,8 +37,12 @@ in {
         ["{repo}" "{version}"]
         [(ver.source.repo or "") ver.version]
         ver.asset.url;
+    
+    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
+    filename = baseNameOf urlPath;
+    name = sanitizeName filename;
   in {
-    inherit url;
+    inherit url name;
     inherit (ver) hash;
   };
 
@@ -58,6 +62,7 @@ in {
     }
     else let
       file = builtins.replaceStrings ["{version}"] [ver.version] plat.file;
+      name = sanitizeName file;
     in {
       url =
         githubUrl
@@ -65,6 +70,7 @@ in {
         (plat.tag_prefix or ver.source.tag_prefix or "")
         ver.version
         file;
+      inherit name;
       inherit (plat) hash;
     };
 
@@ -86,13 +92,24 @@ in {
         ["{repo}" "{version}"]
         [ver.source.repo ver.version]
         ver.asset.url;
-  in {
+    
     url = applySubstitutions vari.substitutions baseUrl 0;
+    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
+    filename = baseNameOf urlPath;
+    name = sanitizeName filename;
+  in {
+    inherit url name;
     inherit (vari) hash;
   };
 
-  getApi = ver: {
-    inherit (ver.asset) url hash;
+  getApi = ver: let
+    url = ver.asset.url;
+    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
+    filename = baseNameOf urlPath;
+    name = sanitizeName filename;
+  in {
+    inherit url name;
+    inherit (ver.asset) hash;
   };
 
   getApiPlatform = platform: ver: let
