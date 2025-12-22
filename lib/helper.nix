@@ -86,7 +86,7 @@ in {
         ver.source.repo
         (ver.source.tag_prefix or "")
         ver.version
-        ver.asset.file
+        (builtins.replaceStrings ["{version}"] [ver.version] ver.asset.file)
       else
         builtins.replaceStrings
         ["{repo}" "{version}"]
