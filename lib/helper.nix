@@ -7,6 +7,12 @@
     ["-" "-"]
     name;
 
+  sanitizeUrl = url:
+    builtins.replaceStrings
+    [" "]
+    ["%20"]
+    url;
+
   applySubstitutions = subs: let
     applySubs = t: idx:
       if idx >= builtins.length subs
@@ -37,10 +43,8 @@ in {
         ["{repo}" "{version}"]
         [(ver.source.repo or "") ver.version]
         ver.asset.url;
-    
-    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
-    filename = baseNameOf urlPath;
-    name = sanitizeName filename;
+
+    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
   in {
     inherit url name;
     inherit (ver) hash;
@@ -52,17 +56,15 @@ in {
   in
     if hasCustomUrl
     then let
-      url = builtins.replaceStrings ["{version}" "{repo}"] [ver.version (plat.repo or ver.source.repo or "")] plat.url;
-      urlPath = builtins.elemAt (lib.splitString "?" url) 0;
-      filename = baseNameOf urlPath;
-      name = sanitizeName filename;
+      rawUrl = builtins.replaceStrings ["{version}" "{repo}"] [ver.version (plat.repo or ver.source.repo or "")] plat.url;
+      url = sanitizeUrl rawUrl;
+      name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
     in {
       inherit url name;
       inherit (plat) hash;
     }
     else let
       file = builtins.replaceStrings ["{version}"] [ver.version] plat.file;
-      name = sanitizeName file;
     in {
       url =
         githubUrl
@@ -70,7 +72,7 @@ in {
         (plat.tag_prefix or ver.source.tag_prefix or "")
         ver.version
         file;
-      inherit name;
+      name = sanitizeName file;
       inherit (plat) hash;
     };
 
@@ -92,21 +94,17 @@ in {
         ["{repo}" "{version}"]
         [ver.source.repo ver.version]
         ver.asset.url;
-    
+
     url = applySubstitutions vari.substitutions baseUrl 0;
-    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
-    filename = baseNameOf urlPath;
-    name = sanitizeName filename;
+    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
   in {
     inherit url name;
     inherit (vari) hash;
   };
 
   getApi = ver: let
-    url = ver.asset.url;
-    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
-    filename = baseNameOf urlPath;
-    name = sanitizeName filename;
+    url = sanitizeUrl ver.asset.url;
+    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
   in {
     inherit url name;
     inherit (ver.asset) hash;
@@ -114,11 +112,8 @@ in {
 
   getApiPlatform = platform: ver: let
     plat = lib.getAttr platform ver.platforms;
-    url = plat.url;
-
-    urlPath = builtins.elemAt (lib.splitString "?" url) 0;
-    filename = baseNameOf urlPath;
-    name = sanitizeName filename;
+    url = sanitizeUrl plat.url;
+    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
   in {
     inherit url name;
     inherit (plat) hash;
