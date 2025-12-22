@@ -44,16 +44,29 @@ in {
 
   getPlatform = platform: ver: let
     plat = lib.getAttr platform ver.platforms;
-    file = builtins.replaceStrings ["{version}"] [ver.version] plat.file;
-  in {
-    url =
-      githubUrl
-      (plat.repo or ver.source.repo)
-      (ver.source.tag_prefix or "")
-      ver.version
-      file;
-    inherit (plat) hash;
-  };
+    hasCustomUrl = plat ? url;
+  in
+    if hasCustomUrl
+    then let
+      url = builtins.replaceStrings ["{version}" "{repo}"] [ver.version (plat.repo or ver.source.repo or "")] plat.url;
+      urlPath = builtins.elemAt (lib.splitString "?" url) 0;
+      filename = baseNameOf urlPath;
+      name = sanitizeName filename;
+    in {
+      inherit url name;
+      inherit (plat) hash;
+    }
+    else let
+      file = builtins.replaceStrings ["{version}"] [ver.version] plat.file;
+    in {
+      url =
+        githubUrl
+        (plat.repo or ver.source.repo)
+        (plat.tag_prefix or ver.source.tag_prefix or "")
+        ver.version
+        file;
+      inherit (plat) hash;
+    };
 
   getVariant = variant: ver: let
     vari = lib.getAttr variant ver.variants;
