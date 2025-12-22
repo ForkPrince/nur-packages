@@ -141,7 +141,7 @@ update_single() {
   local repo="$1"
   local rawVersion="$2"
   local version="$3"
-  local url unpack tmp hash file tag_prefix
+  local url unpack tmp hash file tag_prefix store_name
 
   file=$(jq -r '.asset.file // empty' <<< "$config")
   tag_prefix=$(jq -r '.source.tag_prefix // empty' <<< "$config")
@@ -149,6 +149,7 @@ update_single() {
 
   if [[ -n "$file" && "$file" != "null" ]]; then
     file="${file//\{version\}/$version}"
+    store_name="$file"
     url="https://github.com/${repo}/releases/download/${tag_prefix}${version}/${file}"
   else
     url=$(jq -r '.asset.url // empty' <<< "$config")
@@ -158,12 +159,16 @@ update_single() {
     fi
     url="${url//\{repo\}/$repo}"
     url="${url//\{version\}/$rawVersion}"
+    # URL encode spaces
+    url="${url// /%20}"
   fi
 
   echo "⬇️  Downloading $url"
 
   tmp=$(mktemp)
-  local prefetch_cmd=(nix store prefetch-file "$url" --json)
+  local filename
+  filename=$(basename "$url" | sed 's/%20/-/g; s/ /-/g')
+  local prefetch_cmd=(nix store prefetch-file "$url" --json --name "$filename")
 
   if [[ "$unpack" == "true" ]]; then
     prefetch_cmd+=(--unpack)
@@ -224,21 +229,30 @@ update_platforms() {
     fi
 
     file=$(jq -r --arg p "$platform" '.platforms[$p].file // empty' <<< "$config")
+    custom_url=$(jq -r --arg p "$platform" '.platforms[$p].url // empty' <<< "$config")
     unpack=$(jq -r --arg p "$platform" '.platforms[$p].unpack // false' <<< "$config")
 
-    if [[ -n "$file" && "$file" != "null" ]]; then
+    local store_name=""
+    if [[ -n "$custom_url" && "$custom_url" != "null" ]]; then
+      url="${custom_url//\{version\}/$version}"
+      url="${url//\{repo\}/$platform_repo}"
+      url="${url// /%20}"
+      echo "   [$platform] $(basename "$url" | sed 's/%20/ /g')"
+    elif [[ -n "$file" && "$file" != "null" ]]; then
       file="${file//\{version\}/$version}"
+      store_name="$file"
       local tag_prefix
       tag_prefix=$(jq -r --arg p "$platform" '.platforms[$p].tag_prefix // .source.tag_prefix // empty' <<< "$config")
       url="https://github.com/${platform_repo}/releases/download/${tag_prefix}${version}/${file}"
+      echo "   [$platform] $file"
     else
-      echo "⚠️ Error: 'file' is required for platform '$platform'" >&2
+      echo "⚠️ Error: Either 'file' or 'url' is required for platform '$platform'" >&2
       exit 1
     fi
 
-    echo "   [$platform] $file"
-
-    local prefetch_cmd=(nix store prefetch-file "$url" --json)
+    local filename
+    filename=$(basename "$url" | sed 's/%20/-/g; s/ /-/g')
+    local prefetch_cmd=(nix store prefetch-file "$url" --json --name "$filename")
     if [[ "$unpack" == "true" ]]; then
       prefetch_cmd+=(--unpack)
     fi
