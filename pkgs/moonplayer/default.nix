@@ -17,7 +17,7 @@
 
   pname = "moonplayer";
 
-  base = {
+  baseMeta = {
     description = "Video player that can play online videos from YouTube, Bilibili etc";
     homepage = "https://github.com/coslyk/moonplayer";
     license = lib.licenses.gpl3Only;
@@ -33,7 +33,7 @@ in
       inherit (ver) version;
 
       meta =
-        base
+        baseMeta
         // {
           sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
         };
@@ -59,7 +59,7 @@ in
       inherit pname;
 
       meta =
-        base
+        baseMeta
         // {
           sourceProvenance = with lib.sourceTypes; [fromSource];
         };
