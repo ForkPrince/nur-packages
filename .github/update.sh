@@ -159,7 +159,7 @@ update_single() {
     fi
     url="${url//\{repo\}/$repo}"
     url="${url//\{version\}/$rawVersion}"
-    # URL encode spaces
+
     url="${url// /%20}"
   fi
 
