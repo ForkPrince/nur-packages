@@ -10,8 +10,9 @@ async function check(file, { config, force }) {
         const platforms = config.platforms || {};
 
         const first = Object.values(platforms)[0];
+        const repo = first?.repo || config.source.repo;
 
-        api_repo = first?.substitutions ? apply(config.source.repo, first.substitutions) : api_repo;
+        api_repo = first?.substitutions ? apply(repo, first.substitutions) : repo;
     }
 
     if (config.variants) {
