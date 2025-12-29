@@ -46,6 +46,8 @@ async function single(file, { config, force }) {
     const prefix = config.source.tag_prefix || "";
     const repo = config.source.repo;
 
+    const unpack = config.asset.unpack || false;
+
     let url = config.asset.file ? `https://github.com/${repo}/releases/download/${prefix}${version}/${config.asset.file}` : config.asset.url
 
     url = url
@@ -55,7 +57,7 @@ async function single(file, { config, force }) {
 
     console.log(`Downloading ${url}`);
 
-    const hash = await getHash(url);
+    const hash = await getHash(url, unpack);
 
     await update.single(file, { version, hash });
 
