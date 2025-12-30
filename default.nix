@@ -19,6 +19,7 @@
   dolphin-emu = lib.callPackage ./pkgs/dolphin-emu {};
   obs-studio = lib.callPackage ./pkgs/obs-studio {};
   tiny-rdm = lib.callPackage ./pkgs/tiny-rdm {};
+  openrct2 = lib.callPackage ./pkgs/openrct2 {};
   ghostty = lib.callPackage ./pkgs/ghostty {};
   vscode = lib.callPackage ./pkgs/vscode {};
   gimp = lib.callPackage ./pkgs/gimp {};
