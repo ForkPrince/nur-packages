@@ -66,9 +66,9 @@ async function single(file, { config, force }) {
 
 async function platforms(file, { config, force }) {
     const platforms = config.platforms || {};
-    const hasPerPlatformVersions = Object.values(platforms).some(p => p.version !== undefined);
 
-    if (!hasPerPlatformVersions) {
+    const hasVersions = Object.values(platforms).some(p => p.version !== undefined);
+    if (!hasVersions) {
         const { version } = await check(file, { config, force });
         if (!version) return;
 
@@ -102,7 +102,6 @@ async function platforms(file, { config, force }) {
 
         for (const [platform, settings] of Object.entries(platforms)) {
             const repo = settings.repo || config.source.repo;
-            const currentVersion = settings.version;
 
             console.log(`Checking ${platform} (${repo})...`);
 
@@ -115,9 +114,9 @@ async function platforms(file, { config, force }) {
 
             console.log(`Latest version for ${platform}: ${parsed}`);
 
-            if (!force && parsed === currentVersion) continue
+            if (!force && parsed === settings.version) continue
 
-            console.log(`Update ${platform}: ${currentVersion} → ${parsed}`);
+            console.log(`Update ${platform}: ${settings.version} → ${parsed}`);
 
             const prefix = settings.tag_prefix || config.source.tag_prefix || "";
             const unpack = settings.unpack || false;
