@@ -27,7 +27,8 @@ in
     installPhase = ''
       runHook preInstall
       mkdir -p $out/Applications
-      cp -r "GitHub Desktop.app" $out/Applications/
+      app=$(find . -maxdepth 2 -name "*.app" -type d | head -n1)
+      cp -R "$app" $out/Applications/
       runHook postInstall
     '';
 
@@ -38,6 +39,5 @@ in
       maintainers = ["Prinky"];
       platforms = lib.platforms.darwin;
       sourceProvenance = [lib.sourceTypes.binaryNativeCode];
-      broken = true;
     };
   }
