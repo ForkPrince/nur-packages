@@ -38,5 +38,6 @@ in
       maintainers = ["Prinky"];
       platforms = lib.platforms.darwin;
       sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+      broken = true;
     };
   }
