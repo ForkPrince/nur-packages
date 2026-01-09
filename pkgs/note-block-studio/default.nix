@@ -22,7 +22,7 @@ in
   if stdenv.isDarwin
   then let
     url = "https://github.com/ForkPrince/tap/raw/c60a096fb2552904ec5eada157bcc8427eba13d9/Apps/Note%20Block%20Studio.dmg";
-    name = lib.extractName url;
+    name = lib.helper.extractName url;
   in
     stdenv.mkDerivation {
       inherit pname version meta;
@@ -49,7 +49,7 @@ in
     }
   else let
     url = "https://github.com/ForkPrince/homebrew-tap/raw/refs/heads/main/Apps/Minecraft%20Note%20Block%20Studio%20(Snapshot%202025.08.02).appimage";
-    name = lib.extractName url;
+    name = lib.helper.extractName url;
   in
     appimageTools.extractType2 {
       inherit pname version meta;
