@@ -47,12 +47,15 @@ in
         runHook postInstall
       '';
     }
-  else
+  else let
+    src = "https://github.com/ForkPrince/homebrew-tap/raw/refs/heads/main/Apps/Minecraft%20Note%20Block%20Studio%20(Snapshot%202025.08.02).appimage";
+    name = lib.extractName src;
+  in
     appimageTools.extractType2 {
       inherit pname version meta;
 
       src = fetchurl {
-        url = "https://api.serversmp.xyz/upload/6960ee6564b732e3fdd03f8c.appimage";
+        inherit src name;
         hash = "sha256-7cIv7CD0u95I3AvVV1N0OaTg18AzWRJm5sXm8n3cLrU=";
       };
     }
