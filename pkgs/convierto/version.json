@@ -2,7 +2,7 @@
   "name": "Convierto",
   "source": {
     "type": "github-release",
-    "repo": "nuance-dev/achico",
+    "repo": "nuance-dev/convierto",
     "query": "[0].tag_name",
     "tag_prefix": "v"
   },
@@ -10,6 +10,6 @@
     "file": "Convierto.app.zip",
     "unpack": false
   },
-  "version": "3.2.1",
-  "hash": "sha256-+NKY+BmmeqGwIhbVSHuo/KjK0sNfNxNbsHnrYclaxl8="
+  "version": "1.0.1",
+  "hash": "sha256-tvGGDgRkjsM1cjPdTIDBN9yJJfUa+9M8QCeOFQjmCBc="
 }
