@@ -10,7 +10,7 @@
 if stdenvNoCC.isDarwin
 then let
   ver = lib.helper.read ./version.json;
-in (pcsx2-bin.override {
+in pcsx2-bin.overrideAttrs (old: {
   src = fetchurl (lib.helper.getSingle ver);
 
   meta.platforms = lib.platforms.darwin;
