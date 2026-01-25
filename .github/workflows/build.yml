@@ -125,7 +125,6 @@ jobs:
       - name: Check for hash mismatches
         if: steps.build.outcome == 'failure'
         run: |
-          # Extract package names with hash mismatches
           grep -oP 'attribute.*(?=.*hash mismatch)' build.log | sed 's/attribute //' | sed 's/://g' > failed_packages.txt || true
           if [ -s failed_packages.txt ]; then
             echo "Found packages with hash mismatches:"
