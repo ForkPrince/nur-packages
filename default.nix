@@ -38,7 +38,7 @@
   podman-desktop = lib.callPackage ./pkgs/podman-desktop {};
   sublime-text = lib.callPackage ./pkgs/sublime-text {};
   dolphin-emu = lib.callPackage ./pkgs/dolphin-emu {};
-  zed-editor = lib.callPackage ./pkgs/zed-editor {};
+  # zed-editor = lib.callPackage ./pkgs/zed-editor {};
   obs-studio = lib.callPackage ./pkgs/obs-studio {};
   retroarch = lib.callPackage ./pkgs/retroarch {};
   overlayed = lib.callPackage ./pkgs/overlayed {};
