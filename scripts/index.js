@@ -42,7 +42,7 @@ console.log(`Updating ${file}...`);
 
 switch (config.source.type) {
   case "github-repo": {
-    console.log(`Updating repository archive for ${file}...`);
+    console.log(`Updating repository for ${file}...`);
     await update.github.repo(resolved, { config, force });
     break;
   }
