@@ -71,7 +71,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
     outputHash =
       if stdenvNoCC.hostPlatform.isDarwin then
-        "sha256-m0vAVv8zS8RgU6YpEVbf6l6vilkU+CP/PtAD6U5g/F8="
+        "sha256-lS4SvY2h0FGuAFZJOv5vCNofKHRyyBuKxCfFL687S74="
       else
         "sha256-lS4SvY2h0FGuAFZJOv5vCNofKHRyyBuKxCfFL687S74=";
     outputHashAlgo = "sha256";
