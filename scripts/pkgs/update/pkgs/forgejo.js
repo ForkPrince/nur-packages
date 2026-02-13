@@ -116,6 +116,7 @@ async function platforms(file, { config, force }) {
         console.log(`Skipping ${platform} because it is locked.`);
         continue;
       }
+
       const repo = settings.repo || config.source.repo;
       const instance = settings.instance || config.source.instance;
 
