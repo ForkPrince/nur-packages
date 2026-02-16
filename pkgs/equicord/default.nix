@@ -4,6 +4,7 @@
   equicord,
   pnpm_10,
   lib,
+  stdenv,
   ...
 }: let
   ver = lib.helper.read ./version.json;
@@ -18,7 +19,12 @@ in
       inherit version src;
       pnpm = pnpm_10;
       fetcherVersion = 1;
-      hash = ver.pnpmHash or "";
+      hash = let
+        h = ver.pnpmHash or "";
+      in
+        if builtins.isAttrs h
+        then h.${stdenv.hostPlatform.system} or (throw "No pnpmHash for system: ${stdenv.hostPlatform.system}")
+        else h;
     };
 
     env =
