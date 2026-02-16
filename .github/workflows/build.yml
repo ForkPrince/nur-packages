@@ -63,7 +63,7 @@ jobs:
 
   tests:
     needs: update
-    if: (needs.update.result == 'success' || needs.update.result == 'skipped') && github.ref == 'refs/heads/main'
+    if: always() && needs.update.result != 'failure' && github.ref == 'refs/heads/main'
 
     strategy:
       matrix:
