@@ -58,6 +58,7 @@
   pcsx2 = lib.callPackage ./pkgs/pcsx2 {};
   micro = lib.callPackage ./pkgs/micro {};
   steam = lib.callPackage ./pkgs/steam {};
+  rpcs3 = lib.callPackage ./pkgs/rpcs3 {};
   gimp = lib.callPackage ./pkgs/gimp {};
 
   helium-nightly = lib.callPackage ./pkgs/helium-nightly {};
