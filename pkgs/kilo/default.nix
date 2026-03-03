@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "Kilo-Org";
     repo = "kilocode";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-Bw682z1QsLVuIO6xvhJgbYDbS0tgFCl+/nok1W0QFPM=";
+    hash = "sha256-wklUWUxQNXXXysmfZf6PRpztJUhyFnjrrmVRJ3tkVuw=";
   };
 
   node_modules = stdenvNoCC.mkDerivation {
