@@ -49,6 +49,7 @@ jobs:
             '{
               username: "NUR",
               avatar_url: "https://api.serversmp.xyz/upload/69a58cf144d40b74d08297dc.webp",
+              content: "@everyone",
               embeds: [{
                 title: $title,
                 description: "The following apps failed to update:\n```\n\($apps)\n```",
@@ -95,6 +96,7 @@ jobs:
             '{
               username: "NUR",
               avatar_url: "https://api.serversmp.xyz/upload/69a58cf144d40b74d08297dc.webp",
+              content: "@everyone",
               embeds: [{
                 title: $title,
                 description: "The following apps failed even after retry:\n```\n\($apps)\n```",
@@ -201,19 +203,25 @@ jobs:
           fi
 
       - name: Notify Build Failures
-        if: steps.build.outcome == 'failure' && steps.extract_failures.outputs.failed_packages != ''
+        if: steps.build.outcome == 'failure'
         run: |
+          if [ -n "${{ steps.extract_failures.outputs.failed_packages }}" ]; then
+            description="The following packages failed to build:\n\`\`\`\n${{ steps.extract_failures.outputs.failed_packages }}\n\`\`\`\n**Nix Path:** \`${{ matrix.nixPath }}\`"
+          else
+            description="Build failed but could not extract specific package names. Check the logs for details.\n\n**Nix Path:** \`${{ matrix.nixPath }}\`"
+          fi
+
           payload=$(jq -n \
             --arg title "❌ NUR build failures on ${{ matrix.os }}" \
-            --arg packages "${{ steps.extract_failures.outputs.failed_packages }}" \
-            --arg nixpath "${{ matrix.nixPath }}" \
+            --arg desc "$description" \
             --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             '{
               username: "NUR",
               avatar_url: "https://api.serversmp.xyz/upload/69a58cf144d40b74d08297dc.webp",
+              content: "@everyone",
               embeds: [{
                 title: $title,
-                description: "The following packages failed to build:\n```\n\($packages)\n```\n**Nix Path:** `\($nixpath)`",
+                description: $desc,
                 color: 15158332,
                 url: $url
               }]
