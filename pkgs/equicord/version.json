@@ -10,7 +10,7 @@
   "pnpmHash": {
     "x86_64-linux": "sha256-7YkB7KO96UUeVAk5VwxGcAhHYDTue7gj0nk/gxs3BmI=",
     "aarch64-linux": "sha256-7YkB7KO96UUeVAk5VwxGcAhHYDTue7gj0nk/gxs3BmI=",
-    "aarch64-darwin": "sha256-jxJhDhfXWtQND4luaGmmIIIfnqFkXw2T3zdOSKcna68=",
-    "x86_64-darwin": "sha256-jxJhDhfXWtQND4luaGmmIIIfnqFkXw2T3zdOSKcna68="
+    "aarch64-darwin": "sha256-dudV1ZQXFlXfU6yRrQYsfQmXD8jb0QNICva/cdS/s+4=",
+    "x86_64-darwin": "sha256-dudV1ZQXFlXfU6yRrQYsfQmXD8jb0QNICva/cdS/s+4="
   }
 }
