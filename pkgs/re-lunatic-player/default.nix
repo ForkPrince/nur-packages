@@ -1,3 +1,4 @@
+# FIXME: Update to electron_41 once it's in nixpkgs stable
 {
   electron_40,
   nodejs,
