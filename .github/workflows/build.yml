@@ -28,6 +28,7 @@ jobs:
 
       - name: Update Packages (nix-update)
         run: |
+          export NIX_PATH=nixpkgs=flake:nixpkgs
           while IFS= read -r update_file; do
             pkg=$(basename "$(dirname "$update_file")")
             extra_args=$(cat "$update_file")
