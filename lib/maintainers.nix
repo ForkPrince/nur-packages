@@ -24,4 +24,9 @@
     github = "LMacrini";
     githubId = 62901118;
   };
+  LarsArtmann = {
+    name = "Lars Artmann";
+    github = "LarsArtmann";
+    githubId = 23587853;
+  };
 }
