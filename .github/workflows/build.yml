@@ -26,6 +26,12 @@ jobs:
         with:
           nix_conf: experimental-features = nix-command flakes
 
+      - name: Update Equicord (nix-update)
+        run: |
+          nix shell nixpkgs#nix-update -c nix-update equicord --flake --use-update-script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Update Packages
         id: update
         run: |
