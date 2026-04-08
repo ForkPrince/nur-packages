@@ -19,4 +19,9 @@
     github = "WoutFontaine";
     githubId = 231103959;
   };
+  LMacrini = {
+    name = "Lionel Macrini";
+    github = "LMacrini";
+    githubId = 62901118;
+  };
 }
