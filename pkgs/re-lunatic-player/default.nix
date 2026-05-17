@@ -61,6 +61,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
     CI = 1; # makes the logs more readable during builds
+    npm_config_node_linker = "hoisted";
+    pnpm_config_node_linker = "hoisted";
   };
 
   desktopItems = lib.optionals stdenvNoCC.hostPlatform.isLinux [
