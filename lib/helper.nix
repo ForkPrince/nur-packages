@@ -199,6 +199,7 @@
     meta,
     nativeBuildInputs ? [],
     unpackPhase ? null,
+    postFixup ? null,
     extraInstall ? "",
   }:
     {
@@ -207,11 +208,12 @@
       sourceRoot = ".";
 
       dontBuild = true;
-      dontFixup = true;
+      dontFixup = postFixup == null;
 
       inherit nativeBuildInputs;
     }
     // lib.optionalAttrs (unpackPhase != null) {inherit unpackPhase;}
+    // lib.optionalAttrs (postFixup != null) {inherit postFixup;}
     // {
       installPhase = ''
         runHook preInstall
