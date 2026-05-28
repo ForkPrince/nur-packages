@@ -62,5 +62,5 @@ in
     })
   else
     beeper.overrideAttrs (old: {
-      inherit pname name version src meta;
+      inherit pname version src meta;
     })
