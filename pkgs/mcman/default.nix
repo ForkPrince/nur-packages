@@ -20,7 +20,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoLock = {
-    lockFile = "${src}/Cargo.lock";
+    lockFile = ./Cargo.lock;
     outputHashes = {
       "mcapi-0.2.0" = "sha256-wHXA+4DQVQpfSCfJLFuc9kUSwyqo6T4o0PypYdhpp5s=";
       "pathdiff-0.2.1" = "sha256-+X1afTOLIVk1AOopQwnjdobKw6P8BXEXkdZOieHW5Os=";
