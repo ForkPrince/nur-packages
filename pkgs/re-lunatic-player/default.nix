@@ -34,8 +34,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     [
       makeWrapper
       pnpmConfigHook
+      pnpm_11
       nodejs
-      pnpm
       zip
     ]
     ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
