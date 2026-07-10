@@ -29,7 +29,7 @@ in
   else let
     content = appimageTools.extractType2 {inherit pname version src;};
   in
-    appimageTools.wrapType2 rec {
+    appimageTools.wrapType2 {
       inherit pname version src;
 
       extraInstallCommands = ''
