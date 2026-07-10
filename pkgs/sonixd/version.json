@@ -7,6 +7,7 @@
     "tag_prefix": "v"
   },
   "version": "0.15.5",
+  "locked": true,
   "platforms": {
     "aarch64-linux": {
       "file": "Sonixd-{version}-linux-arm64.AppImage",
