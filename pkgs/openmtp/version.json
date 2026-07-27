@@ -1,0 +1,20 @@
+{
+  "name": "OpenMTP",
+  "source": {
+    "type": "github-release",
+    "repo": "ganeshrvel/openmtp",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "version": "1.4.156",
+  "platforms": {
+    "aarch64-darwin": {
+      "file": "openmtp-{version}-mac-arm64.zip",
+      "hash": "sha256-tE6KhjSNifw+pfHIGAiFuJVhs0b+fN+VtCgWmAZhLhM="
+    },
+    "x86_64-darwin": {
+      "file": "openmtp-{version}-mac-x64.zip",
+      "hash": "sha256-QW8MNsFRcW8kDHtXTd8lnrk0agS0LXflZYSJ6/ubaG4="
+    }
+  }
+}
