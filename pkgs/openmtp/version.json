@@ -6,15 +6,15 @@
     "skip_prerelease": true,
     "tag_prefix": "v"
   },
-  "version": "1.4.156",
+  "version": "3.2.25",
   "platforms": {
     "aarch64-darwin": {
       "file": "openmtp-{version}-mac-arm64.zip",
-      "hash": "sha256-tE6KhjSNifw+pfHIGAiFuJVhs0b+fN+VtCgWmAZhLhM="
+      "hash": "sha256-aPWsvifEA5Q9AlVl6kBJIqRP3q0F2XCJeClQMyZ4At0="
     },
     "x86_64-darwin": {
       "file": "openmtp-{version}-mac-x64.zip",
-      "hash": "sha256-QW8MNsFRcW8kDHtXTd8lnrk0agS0LXflZYSJ6/ubaG4="
+      "hash": "sha256-x4DMQvgjbNVlUyjxKPDj5gk9MW2DADgP3cmPeJVu22I="
     }
   }
 }
