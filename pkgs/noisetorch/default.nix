@@ -10,7 +10,7 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "ForkPrince";
     repo = "NoiseTorch";
-    tag = "5200d8d0c71d9682256d71b87c3aa625febc08f9";
+    rev = "5200d8d0c71d9682256d71b87c3aa625febc08f9";
     hash = "sha256-WttsCMO43e+BPIcE4pbnvdC3OI00N4x0KnaMcAHOwbU=";
     fetchSubmodules = true;
   };
