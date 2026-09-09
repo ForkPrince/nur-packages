@@ -17,7 +17,7 @@
     homepage = "https://helixnotes.com";
     maintainers = with lib.maintainers; [Prinky];
     license = lib.licenses.agpl3Plus;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.darwin ++ ["x86_64-linux"];
     mainProgram = "helixnotes";
   };
 in
