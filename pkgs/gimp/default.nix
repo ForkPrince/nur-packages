@@ -2,7 +2,7 @@
   gimp-with-plugins,
   stdenvNoCC,
   fetchurl,
-  _7zz,
+  undmg,
   lib,
 }:
 if stdenvNoCC.hostPlatform.isDarwin
@@ -15,13 +15,7 @@ in
 
     src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
-    nativeBuildInputs = [_7zz];
-
-    unpackPhase = ''
-      runHook preUnpack
-      7zz x "$src" -snld
-      runHook postUnpack
-    '';
+    nativeBuildInputs = [undmg];
 
     meta = {
       description = "GNU Image Manipulation Program";
