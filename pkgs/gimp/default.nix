@@ -19,16 +19,8 @@ in
 
     unpackPhase = ''
       runHook preUnpack
-      7zz x "$src" -snld || true
+      7zz x "$src" -snld
       runHook postUnpack
-    '';
-
-    postFixup = ''
-      app="$out/Applications/GIMP.app"
-      rm -rf "$app/Contents/Resources/share"
-      ln -sf ../locale "$app/Contents/Resources/share"
-      rm -rf "$app/Contents/lib/Python.framework/Versions/3.14/Resources/Python.app/Contents/share"
-      ln -sf ../../../../../../../share "$app/Contents/lib/Python.framework/Versions/3.14/Resources/Python.app/Contents/share"
     '';
 
     meta = {
