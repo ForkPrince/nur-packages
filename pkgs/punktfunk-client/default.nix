@@ -41,7 +41,7 @@ in
   then
     stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
       pname = "punktfunk";
-      inherit version src;
+      inherit version src meta;
 
       nativeBuildInputs = [_7zz];
     })
