@@ -1,14 +1,13 @@
 {
   makeDesktopItem,
   appimageTools,
-  stdenvNoCC,
   fetchurl,
   lib,
 }: let
   ver = lib.helper.read ./version.json;
 
   pname = "kryoto-desktop";
-  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
+  src = fetchurl (lib.helper.getSingle ver);
   inherit (ver) version;
 
   contents = appimageTools.extractType2 {inherit pname version src;};
