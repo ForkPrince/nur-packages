@@ -10,6 +10,7 @@
   patchelf,
   pipewire,
   wayland,
+  python3,
   stdenv,
   cairo,
   libGL,
@@ -60,6 +61,7 @@ in
         autoPatchelfHook
         wrapGAppsHook4
         patchelf
+        python3
         dpkg
       ];
 
@@ -101,14 +103,22 @@ in
         runHook postInstall
       '';
 
-      # The client is built against glibc 2.43, which moved a handful of libm
-      # symbols onto a new version node. nixpkgs ships an older glibc, where the
-      # very same symbols exist under their previous nodes, so drop the version
-      # requirement for anything newer than what we link against.
+      # glibc 2.43 introduced new symbol versions for several libm symbols.
+      # nixpkgs uses an older glibc that provides these symbols under their
+      # previous versions, so remove the newer version requirements.
+      #
+      # The symbols alone aren't enough: ld.so also checks .gnu.version_r
+      # at load time, so the GLIBC_2.43 version entry must be updated too.
+      #
+      # wrapGAppsHook4 moves binaries to .<name>-wrapped during fixupOutput,
+      # before this hook runs, hence the dotfile glob.
       postFixup = ''
         glibcVersion="${stdenv.cc.libc.version}"
 
-        for elf in "$out"/bin/*; do
+        for elf in "$out"/bin/* "$out"/bin/.[!.]*; do
+          [ -f "$elf" ] || continue
+          [ "$(head -c 4 "$elf")" = $'\x7fELF' ] || continue
+
           for node in $(readelf --version-info "$elf" | grep -o 'GLIBC_[0-9.]*' | sort -u | awk -v current="$glibcVersion" '
             function version(s) { split(s, part, "."); return part[1] * 1000000 + part[2] }
             { sub(/^GLIBC_/, ""); if (version($0) > version(current)) print }
@@ -120,6 +130,8 @@ in
               patchelf --clear-symbol-version "$symbol" "$elf"
             done
           done
+
+          python3 ${./fix-glibc-versions.py} "$elf" "$glibcVersion"
         done
       '';
     }
