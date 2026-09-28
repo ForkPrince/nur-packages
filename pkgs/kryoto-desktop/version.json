@@ -1,0 +1,16 @@
+{
+  "name": "Kryoto Desktop",
+  "source": {
+    "type": "github-release",
+    "repo": "kyrotooooo/kryoto-desktop",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "version": "0.2.2",
+  "platforms": {
+    "x86_64-linux": {
+      "file": "Kryoto-Desktop_{version}_amd64.AppImage",
+      "hash": "sha256-N6WwbGxsdK7+vxH0KskGw4lhRoJVFIU4kDenCTQn/No="
+    }
+  }
+}
