@@ -58,11 +58,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     homepage = "https://github.com/System64fumo/syslock";
-    description = "Simple screen locker for wayland written in gtkmm 4.";
+    description = "Simple screen locker for Wayland written in gtkmm4";
     mainProgram = "syslock";
-    license = lib.licenses.wtfpl;
+    license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [Prinky];
-    platforms = ["x86_64-linux"];
+    platforms = lib.platforms.linux;
     sourceProvenance = [lib.sourceTypes.fromSource];
   };
 })
