@@ -28,6 +28,7 @@
   noisetorch = lib.callPackage ./pkgs/noisetorch {};
   altersend = lib.callPackage ./pkgs/altersend {};
   equicord = lib.callPackage ./pkgs/equicord {};
+  orbolay = lib.callPackage ./pkgs/orbolay {};
   wg-nord = lib.callPackage ./pkgs/wg-nord {};
   sonixd = lib.callPackage ./pkgs/sonixd {};
   hytale = lib.callPackage ./pkgs/hytale {};
