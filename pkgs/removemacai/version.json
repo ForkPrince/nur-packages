@@ -1,0 +1,15 @@
+{
+  "name": "RemoveMacAI",
+  "source": {
+    "type": "github-release",
+    "repo": "omlahore/RemoveMacAI",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "asset": {
+    "file": "removemacai-darwin-arm64.tar.gz",
+    "unpack": true
+  },
+  "version": "0.2.5",
+  "hash": "sha256-pW98Q8CqfWaFyGJw2F83hnn510XO+JQN8FENkijcVH8="
+}
