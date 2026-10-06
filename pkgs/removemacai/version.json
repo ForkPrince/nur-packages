@@ -8,8 +8,8 @@
   },
   "asset": {
     "file": "removemacai-darwin-arm64.tar.gz",
-    "unpack": true
+    "unpack": false
   },
   "version": "0.2.5",
-  "hash": "sha256-pW98Q8CqfWaFyGJw2F83hnn510XO+JQN8FENkijcVH8="
+  "hash": "sha256-KTpDixirFg1Yyh13rCgtXeZ1N7FznPpc190PI/gNYrE="
 }
