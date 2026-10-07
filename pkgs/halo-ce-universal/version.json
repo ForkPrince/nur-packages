@@ -1,0 +1,15 @@
+{
+  "name": "Halo: Combat Evolved",
+  "source": {
+    "type": "github-release",
+    "repo": "cybersecurity/halo-ce-universal",
+    "skip_prerelease": true,
+    "tag_prefix": "build-"
+  },
+  "asset": {
+    "file": "halo-linux-release.zip",
+    "unpack": false
+  },
+  "version": "72",
+  "hash": "sha256-eVi140cBH2Pgv7q6FqAJxFgpep/wa/yf89B7Pa0RgBo="
+}
