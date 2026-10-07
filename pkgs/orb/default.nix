@@ -14,7 +14,7 @@ in
     src = fetchFromGitHub (lib.helper.getSingle ver);
 
     cargoLock = {
-      lockFile = "${finalAttrs.src}/Cargo.lock";
+      lockFile = ./Cargo.lock;
     };
 
     cargoBuildFlags = ["--package" "orb-cli"];
