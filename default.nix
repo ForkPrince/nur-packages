@@ -3,6 +3,7 @@
   overlays = import ./overlays;
   lib = import ./lib {inherit pkgs;};
 
+  halo-ce-universal = lib.callPackage ./pkgs/halo-ce-universal {};
   hyprcursor-bibata = lib.callPackage ./pkgs/hyprcursor-bibata {};
   twintaillauncher = lib.callPackage ./pkgs/twintaillauncher {};
   kryoto-desktop = lib.callPackage ./pkgs/kryoto-desktop {};
