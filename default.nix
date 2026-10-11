@@ -23,22 +23,15 @@
   wiiudownloader = lib.callPackage ./pkgs/wiiudownloader {};
   ab-download-manager = lib.callPackage ./pkgs/abdm {};
   osu-tachyon = lib.callPackage ./pkgs/osu-tachyon {};
-  vectorcraft = lib.callPackage ./pkgs/vectorcraft {};
-  effectcraft = lib.callPackage ./pkgs/effectcraft {};
-  designcraft = lib.callPackage ./pkgs/designcraft {};
   nintoolbox = lib.callPackage ./pkgs/nintoolbox {};
   oak-editor = lib.callPackage ./pkgs/oak-editor {};
   helixnotes = lib.callPackage ./pkgs/helixnotes {};
   moonplayer = lib.callPackage ./pkgs/moonplayer {};
   noisetorch = lib.callPackage ./pkgs/noisetorch {};
   streamnook = lib.callPackage ./pkgs/streamnook {};
-  lightcraft = lib.callPackage ./pkgs/lightcraft {};
-  photocraft = lib.callPackage ./pkgs/photocraft {};
   altersend = lib.callPackage ./pkgs/altersend {};
   genoffice = lib.callPackage ./pkgs/genoffice {};
-  filmcraft = lib.callPackage ./pkgs/filmcraft {};
   equicord = lib.callPackage ./pkgs/equicord {};
-  pdfcraft = lib.callPackage ./pkgs/pdfcraft {};
   orbolay = lib.callPackage ./pkgs/orbolay {};
   wg-nord = lib.callPackage ./pkgs/wg-nord {};
   sonixd = lib.callPackage ./pkgs/sonixd {};
@@ -124,6 +117,19 @@
   fluxer-stable-bin = lib.callPackage ./pkgs/fluxer-stable-bin {};
   helium-nightly = lib.callPackage ./pkgs/helium-nightly {};
   waterfox-bin = lib.callPackage ./pkgs/waterfox-bin {};
+
+  vectorcraft = lib.callPackage ./pkgs/vectorcraft {};
+  effectcraft = lib.callPackage ./pkgs/effectcraft {};
+  designcraft = lib.callPackage ./pkgs/designcraft {};
+  photocraft = lib.callPackage ./pkgs/photocraft {};
+  soundcraft = lib.callPackage ./pkgs/soundcraft {};
+  lightcraft = lib.callPackage ./pkgs/lightcraft {};
+  filmcraft = lib.callPackage ./pkgs/filmcraft {};
+  deckcraft = lib.callPackage ./pkgs/deckcraft {};
+  gridcraft = lib.callPackage ./pkgs/gridcraft {};
+  wordcraft = lib.callPackage ./pkgs/wordcraft {};
+  pdfcraft = lib.callPackage ./pkgs/pdfcraft {};
+  cadcraft = lib.callPackage ./pkgs/cadcraft {};
 
   yaagl = lib.callPackage ./pkgs/yaagl {};
   yaagl-os = lib.callPackage ./pkgs/yaagl {region = "os";};

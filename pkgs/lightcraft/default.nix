@@ -13,7 +13,7 @@
   src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
   meta = {
-    description = "Lighting and photo editing tool";
+    description = "Photo editor with color grading and RAW developing";
     homepage = "https://getartcraft.com/apps/lightcraft";
     maintainers = with lib.maintainers; [Prinky];
     license = with lib.licenses; [asl20 mit];

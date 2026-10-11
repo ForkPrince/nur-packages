@@ -13,7 +13,7 @@
   src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
   meta = {
-    description = "PDF editor";
+    description = "PDF editor for viewing, annotating and manipulating PDF documents";
     homepage = "https://getartcraft.com/apps/pdfcraft";
     maintainers = with lib.maintainers; [Prinky];
     license = with lib.licenses; [asl20 mit];

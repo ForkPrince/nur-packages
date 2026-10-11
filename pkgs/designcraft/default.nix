@@ -13,7 +13,7 @@
   src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
   meta = {
-    description = "Graphic design tool";
+    description = "Page layout and publishing application";
     homepage = "https://getartcraft.com/apps/designcraft";
     maintainers = with lib.maintainers; [Prinky];
     license = with lib.licenses; [asl20 mit];

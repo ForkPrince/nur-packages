@@ -13,7 +13,7 @@
   src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
   meta = {
-    description = "Video effects editor";
+    description = "Motion graphics and visual effects compositor";
     homepage = "https://getartcraft.com/apps/effectcraft";
     maintainers = with lib.maintainers; [Prinky];
     license = with lib.licenses; [asl20 mit];

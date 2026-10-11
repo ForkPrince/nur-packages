@@ -13,7 +13,7 @@
   src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
   meta = {
-    description = "Photo editor";
+    description = "Photo editor for raster image editing";
     homepage = "https://getartcraft.com/apps/photocraft";
     maintainers = with lib.maintainers; [Prinky];
     license = with lib.licenses; [asl20 mit];
