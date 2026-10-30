@@ -5,7 +5,7 @@ An [NUR](https://github.com/nix-community/NUR) repository for packages we need.
 ![Build and populate cache](https://github.com/Forkprince/nur-packages/workflows/Build%20and%20populate%20cache/badge.svg)
 [![Cachix Cache](https://img.shields.io/badge/cachix-forkprince-blue.svg)](https://forkprince.cachix.org)
 
-## Package types
+## Package Types
 
 This repository contains three types of packages:
 
