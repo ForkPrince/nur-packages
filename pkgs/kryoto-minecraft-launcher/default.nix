@@ -1,5 +1,7 @@
 {
+  libgpg-error,
   runCommand,
+  libgcrypt,
   fetchurl,
   jdk25,
   jdk21,
@@ -45,6 +47,11 @@ in
 
     desktopName = "Kryoto Minecraft Launcher";
     categories = ["Game"];
+
+    extraPkgs = [
+      libgpg-error
+      libgcrypt
+    ];
 
     extraBwrapArgs =
       ["--unsetenv GIO_EXTRA_MODULES" "--ro-bind ${javaBins} ${javaBins}"]
