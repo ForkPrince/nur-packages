@@ -32,7 +32,7 @@
   };
 in
   buildGoModule (finalAttrs: {
-    pname = "NoiseTorch";
+    pname = "noisetorch-next";
     version = "0bd8ba1664cf53564c497d8faa52388e86a49467";
 
     src = fetchFromGitHub {
