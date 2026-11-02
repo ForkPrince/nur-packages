@@ -3,8 +3,7 @@
   fetchFromGitHub,
   fetchPnpmDeps,
   equicord,
-  pnpm_10,
-  pnpm_10_latest ? pnpm_10,
+  pnpm_11,
   ...
 }: let
   version = "1.15.15.0";
@@ -19,9 +18,9 @@
   pnpmDeps = fetchPnpmDeps {
     inherit (equicord) pname;
     inherit version src;
-    pnpm = pnpm_10_latest;
-    fetcherVersion = 3;
-    hash = "sha256-M4mrhAMDh+HP5O6gJobUcrr/EkcC9V1E+2JdZHWufdU=";
+    pnpm = pnpm_11;
+    fetcherVersion = 4;
+    hash = "sha256-YI+fviBbfyKPdPZtMqin3Sk2M1Rumdf+B8n68bsibnc=";
   };
 in
   equicord.overrideAttrs (old: {
@@ -29,7 +28,7 @@ in
 
     nativeBuildInputs = map (input:
       if builtins.isAttrs input && builtins.match "pnpm(_[0-9]+)?" (input.pname or "") != null
-      then pnpm_10_latest
+      then pnpm_11
       else input)
     (old.nativeBuildInputs or []);
 
