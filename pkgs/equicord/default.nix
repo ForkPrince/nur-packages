@@ -23,7 +23,7 @@
       inherit version src;
       pnpm = pnpm_11;
       fetcherVersion = 4;
-      hash = "sha256-M4mrhAMDh+HP5O6gJobUcrr/EkcC9V1E+2JdZHWufdU=";
+      hash = "sha256-YI+fviBbfyKPdPZtMqin3Sk2M1Rumdf+B8n68bsibnc=";
     }).overrideAttrs (old: {
       fixupPhase =
         lib.replaceStrings [
