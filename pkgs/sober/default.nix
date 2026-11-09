@@ -2,6 +2,7 @@
   gsettings-desktop-schemas,
   glib-networking,
   buildFHSEnv,
+  runCommand,
   stdenvNoCC,
   writeText,
   fetchurl,
@@ -44,6 +45,10 @@
     flatpak-version=${flatpak.version}
     branch=stable
     sandbox=true
+  '';
+
+  seccompFilter = runCommand "sober-seccomp-filter" {} ''
+    printf '\006\000\000\000\000\000\377\177' > "$out"
   '';
 
   unwrapped = stdenvNoCC.mkDerivation {
@@ -92,12 +97,15 @@ in
   buildFHSEnv {
     inherit pname version;
 
+    # unshareUser = true;
+
     targetPkgs = pkgs:
       with pkgs; [
         gst_all_1.gst-plugins-base
         gst_all_1.gst-plugins-good
         gsettings-desktop-schemas
         gst_all_1.gstreamer
+        xkeyboard-config
         glib-networking
         webkitgtk_6_0
         vulkan-loader
@@ -105,12 +113,14 @@ in
         fontconfig
         libadwaita
         noto-fonts
+        libseccomp
         unwrapped
         libsoup_3
         libsecret
         freetype
         libglvnd
         alsa-lib
+        sdl3-ttf
         openssl
         libxml2
         curl
@@ -119,6 +129,7 @@ in
         dbus
         gtk4
         mesa
+        sdl3
         nss
       ];
 
@@ -129,10 +140,17 @@ in
       export GIO_MODULE_DIR="${glib-networking}/lib/gio/modules"
     '';
 
+    extraPreBwrapCmds = "exec 3< ${seccompFilter}";
+
     extraBwrapArgs = [
       "--ro-bind"
       "${flatpakInfo}"
       "/.flatpak-info"
+      "--seccomp"
+      "3"
+      "--bind"
+      "\"$XDG_RUNTIME_DIR\""
+      "\"$XDG_RUNTIME_DIR\""
     ];
 
     runScript = "${unwrapped}/bin/sober";
