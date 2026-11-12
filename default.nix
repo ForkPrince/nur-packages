@@ -28,6 +28,7 @@
     punktfunk-client = lib.callPackage ./pkgs/punktfunk-client {};
     quiver-launcher = lib.callPackage ./pkgs/quiver-launcher {};
     noisetorch-next = lib.callPackage ./pkgs/noisetorch-next {};
+    pokemon-fulldex = lib.callPackage ./pkgs/pokemon-fulldex {};
     nintoolbox-gui = lib.callPackage ./pkgs/nintoolbox-gui {};
     beeper-nightly = lib.callPackage ./pkgs/beeper-nightly {};
     app-librescore = lib.callPackage ./pkgs/app-librescore {};
