@@ -97,6 +97,7 @@
     openemu = lib.callPackage ./pkgs/openemu {};
     openmtp = lib.callPackage ./pkgs/openmtp {};
     puremac = lib.callPackage ./pkgs/puremac {};
+    steamac = lib.callPackage ./pkgs/steamac {};
     macusb = lib.callPackage ./pkgs/macusb {};
     roblox = lib.callPackage ./pkgs/roblox {};
     figura = lib.callPackage ./pkgs/figura {};
