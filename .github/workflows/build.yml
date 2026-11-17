@@ -19,7 +19,7 @@ on:
           - nix-update
           - bun
       allow:
-        description: "Comma-separated packages to allow through the scan (see .allow)"
+        description: "Which packages to allow"
         required: false
         default: ""
         type: string
