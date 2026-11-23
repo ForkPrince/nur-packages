@@ -8,7 +8,7 @@
   ver = lib.helper.read ./version.json;
 
   pname = "emerald-launcher";
-  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
+  src = fetchurl (lib.helper.getSingle ver);
   inherit (ver) version;
 
   meta = {

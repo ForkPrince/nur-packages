@@ -6,10 +6,8 @@
     "version_path": ".STABLE[0].version"
   },
   "version": "3.2.8",
-  "platforms": {
-    "aarch64-darwin": {
-      "url": "https://download.gimp.org/gimp/v{version:2}/macos/gimp-{version}-arm64.dmg",
-      "hash": "sha256-BkBKN1EGt2E7o6FMfY2afL4YubnisgULty8xYsvPw5U="
-    }
+  "asset": {
+    "url": "https://download.gimp.org/gimp/v{version:2}/macos/gimp-{version}-arm64.dmg",
+    "hash": "sha256-BkBKN1EGt2E7o6FMfY2afL4YubnisgULty8xYsvPw5U="
   }
 }

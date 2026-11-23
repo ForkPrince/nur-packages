@@ -6,10 +6,8 @@
     "skip_prerelease": true
   },
   "version": "2026.5.0",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "Parabolic-macOS-arm64.zip",
-      "hash": "sha256-4Vk6xlBZ9/mWIc1L9XDLrsa4s16rFubw8qsOhNBIcz0="
-    }
+  "asset": {
+    "file": "Parabolic-macOS-arm64.zip",
+    "hash": "sha256-4Vk6xlBZ9/mWIc1L9XDLrsa4s16rFubw8qsOhNBIcz0="
   }
 }

@@ -10,7 +10,7 @@ in
     pname = "openmtp";
     inherit (ver) version;
 
-    src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
+    src = fetchurl (lib.helper.getSingle ver);
 
     nativeBuildInputs = [unzip];
 

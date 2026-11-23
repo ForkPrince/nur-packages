@@ -7,10 +7,8 @@
     "tag_prefix": "v"
   },
   "version": "1.6.1",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "LCE.Emerald.Launcher_{version}_aarch64.dmg",
-      "hash": "sha256-4ubFClsLhH7XyFerikrkIfqGZglvPJ+ouyFvIWOdz9I="
-    }
+  "asset": {
+    "file": "LCE.Emerald.Launcher_{version}_aarch64.dmg",
+    "hash": "sha256-4ubFClsLhH7XyFerikrkIfqGZglvPJ+ouyFvIWOdz9I="
   }
 }

@@ -6,10 +6,8 @@
     "skip_prerelease": true
   },
   "version": "11.4.0",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "peazip-{version}.DARWIN.aarch64.dmg",
-      "hash": "sha256-sx7IHhPb4hphiWN4VeVbgnssfeBGupcGC2iazj9iSPk="
-    }
+  "asset": {
+    "file": "peazip-{version}.DARWIN.aarch64.dmg",
+    "hash": "sha256-sx7IHhPb4hphiWN4VeVbgnssfeBGupcGC2iazj9iSPk="
   }
 }

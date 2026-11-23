@@ -6,10 +6,8 @@
     "skip_prerelease": true
   },
   "version": "1.5.3",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "rustdesk-{version}-aarch64.dmg",
-      "hash": "sha256-5tMPoWM9dyxIk1kHwgjKTlVahW+yA4rzqqh6MnwpNgs="
-    }
+  "asset": {
+    "file": "rustdesk-{version}-aarch64.dmg",
+    "hash": "sha256-5tMPoWM9dyxIk1kHwgjKTlVahW+yA4rzqqh6MnwpNgs="
   }
 }

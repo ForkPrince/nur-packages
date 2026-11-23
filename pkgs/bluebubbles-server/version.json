@@ -7,10 +7,8 @@
     "tag_prefix": "v"
   },
   "version": "1.9.12",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "BlueBubbles-{version}-arm64.dmg",
-      "hash": "sha256-kjtWLSyUXnu1h1dpAvOa8UVux0awQQkKOXKW4HhtXUM="
-    }
+  "asset": {
+    "file": "BlueBubbles-{version}-arm64.dmg",
+    "hash": "sha256-kjtWLSyUXnu1h1dpAvOa8UVux0awQQkKOXKW4HhtXUM="
   }
 }

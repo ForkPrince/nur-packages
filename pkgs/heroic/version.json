@@ -7,10 +7,8 @@
     "tag_prefix": "v"
   },
   "version": "2.22.4",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "Heroic-{version}-macOS-arm64.zip",
-      "hash": "sha256-gpr8bykZiR6F2+UEqNqzMaCoxd2wJtDA/OXFyoE7D1A="
-    }
+  "asset": {
+    "file": "Heroic-{version}-macOS-arm64.zip",
+    "hash": "sha256-gpr8bykZiR6F2+UEqNqzMaCoxd2wJtDA/OXFyoE7D1A="
   }
 }

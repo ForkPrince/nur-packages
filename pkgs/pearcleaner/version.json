@@ -6,10 +6,8 @@
     "skip_prerelease": true
   },
   "version": "5.4.3",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "Pearcleaner-arm.zip",
-      "hash": "sha256-9FVOaeEXnPzZCIcwGEI/LX4rWI01Vsvs3Xh4iGbZeqs="
-    }
+  "asset": {
+    "file": "Pearcleaner-arm.zip",
+    "hash": "sha256-9FVOaeEXnPzZCIcwGEI/LX4rWI01Vsvs3Xh4iGbZeqs="
   }
 }
