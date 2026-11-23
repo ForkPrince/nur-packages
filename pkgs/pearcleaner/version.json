@@ -10,10 +10,6 @@
     "aarch64-darwin": {
       "file": "Pearcleaner-arm.zip",
       "hash": "sha256-9FVOaeEXnPzZCIcwGEI/LX4rWI01Vsvs3Xh4iGbZeqs="
-    },
-    "x86_64-darwin": {
-      "file": "Pearcleaner-intel.zip",
-      "hash": "sha256-F+cQAatqgRY3i/Am6ANEYi/cs3wswHygZBWscPzLEyE="
     }
   }
 }

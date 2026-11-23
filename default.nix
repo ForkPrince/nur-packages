@@ -196,9 +196,9 @@
     luxtorpeda-bin = lib.callPackage ./pkgs/luxtorpeda-bin {};
     boxtron-bin = lib.callPackage ./pkgs/boxtron-bin {};
 
-    proton-cachyos-arm-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "arm";};
-    proton-cachyos-v1-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "v1";};
-    proton-cachyos-v3-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "v3";};
+    proton-cachyos-arm-bin = lib.callPackage ./pkgs/proton-cachyos-arm-bin {};
+    proton-cachyos-v1-bin = lib.callPackage ./pkgs/proton-cachyos-v1-bin {};
+    proton-cachyos-v3-bin = lib.callPackage ./pkgs/proton-cachyos-v3-bin {};
 
     openemu-meta = lib.callPackage ./pkgs/openemu-meta {
       inherit openemu openemu-silicon;

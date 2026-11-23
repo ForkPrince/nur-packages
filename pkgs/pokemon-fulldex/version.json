@@ -21,10 +21,6 @@
     "aarch64-darwin": {
       "file": "pokemon-ds-wide-pc-macos-arm64.zip",
       "hash": "sha256-9XvXAs2F+Bh2qCGySCI9d11C0Q6w1Dhr+hnFtyPHSIg="
-    },
-    "x86_64-darwin": {
-      "file": "pokemon-ds-wide-pc-macos-x86_64.zip",
-      "hash": "sha256-YDV3EZ9uyVIHdOEf1vHk/nr/5plW7AoMMX7YPHSAXes="
     }
   }
 }

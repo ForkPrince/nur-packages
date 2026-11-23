@@ -12,10 +12,6 @@
       "file": "GitCraft_{version}_universal.dmg",
       "hash": "sha256-YBOKBbSG+vIOHBNf31G2qIy8beNMK9CARe8iy1nz3wY="
     },
-    "x86_64-darwin": {
-      "file": "GitCraft_{version}_universal.dmg",
-      "hash": "sha256-YBOKBbSG+vIOHBNf31G2qIy8beNMK9CARe8iy1nz3wY="
-    },
     "aarch64-linux": {
       "file": "GitCraft_{version}_aarch64.AppImage",
       "hash": "sha256-j6iubV3bw+GE3kjThqGf4oRsKnRq9/8VLxMCeM3LB8E="

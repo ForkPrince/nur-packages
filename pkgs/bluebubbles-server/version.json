@@ -11,10 +11,6 @@
     "aarch64-darwin": {
       "file": "BlueBubbles-{version}-arm64.dmg",
       "hash": "sha256-kjtWLSyUXnu1h1dpAvOa8UVux0awQQkKOXKW4HhtXUM="
-    },
-    "x86_64-darwin": {
-      "file": "BlueBubbles-{version}.dmg",
-      "hash": "sha256-aFipFOPS5/1Asez10k6keJ6g4zr2s60r8alA4JCr/1c="
     }
   }
 }

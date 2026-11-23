@@ -12,10 +12,6 @@
       "file": "effectcraft-{version}-macos-universal.dmg",
       "hash": "sha256-ItARHR2qpxQu5iZqK4F00vTTdcTBLg38QKBNs9+zWFE="
     },
-    "x86_64-darwin": {
-      "file": "effectcraft-{version}-macos-universal.dmg",
-      "hash": "sha256-ItARHR2qpxQu5iZqK4F00vTTdcTBLg38QKBNs9+zWFE="
-    },
     "x86_64-linux": {
       "file": "effectcraft-{version}-linux-x86_64.AppImage",
       "hash": "sha256-n4oWz3QUfJ4qw7ZfpvW+lqPhDq2S3fCNVE9dOZCtZNw="

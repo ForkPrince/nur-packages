@@ -12,10 +12,6 @@
       "file": "figcraft-{version}-macos-universal.dmg",
       "hash": "sha256-3nvCL7NjxXo1CSf1ygCb1ESxmZO96yhjtWTpnz+64jA="
     },
-    "x86_64-darwin": {
-      "file": "figcraft-{version}-macos-universal.dmg",
-      "hash": "sha256-3nvCL7NjxXo1CSf1ygCb1ESxmZO96yhjtWTpnz+64jA="
-    },
     "x86_64-linux": {
       "file": "figcraft-{version}-linux-x86_64.AppImage",
       "hash": "sha256-lYaULdYxuWtMVSKYjp6AITkHuAIv+vvKYko/wRrnqek="

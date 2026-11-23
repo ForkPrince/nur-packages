@@ -12,10 +12,6 @@
       "file": "WiiUDownloader-macOS-Universal.dmg",
       "hash": "sha256-J4ogHE5WSASdcpoc+7CtddcdSvbisDhEVM3SYJkZgX0="
     },
-    "x86_64-darwin": {
-      "file": "WiiUDownloader-macOS-Universal.dmg",
-      "hash": "sha256-J4ogHE5WSASdcpoc+7CtddcdSvbisDhEVM3SYJkZgX0="
-    },
     "x86_64-linux": {
       "file": "WiiUDownloader-Linux-x86_64.AppImage",
       "hash": "sha256-4Nb9OiRLvgpJlJyOIq6ePnzIhCuRh+WOuuZjG+C4JtQ="

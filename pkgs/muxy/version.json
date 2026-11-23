@@ -11,10 +11,6 @@
     "aarch64-darwin": {
       "file": "Muxy-{version}-arm64.dmg",
       "hash": "sha256-32PxhAeNaSdK7/je+3WazlR5tkn1MYuryFvL0FtbHJY="
-    },
-    "x86_64-darwin": {
-      "file": "Muxy-{version}-x86_64.dmg",
-      "hash": "sha256-sjU+qB7z+PVG91WJmgVjVm6jzYjMThGtCFyr4JgCPfk="
     }
   }
 }

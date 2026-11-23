@@ -19,10 +19,6 @@
     "aarch64-darwin": {
       "file": "sfw-free-macos-arm64",
       "hash": "sha256-Kd8EnfLvcFqM5ybGxB/nOmA09rHNDYfz8Vp4DQdLbYM="
-    },
-    "x86_64-darwin": {
-      "file": "sfw-free-macos-x86_64",
-      "hash": "sha256-tXSTG8Kzw2qb8HrAe5wHiU+M0xTvyRvF5P4cNxtWrco="
     }
   }
 }

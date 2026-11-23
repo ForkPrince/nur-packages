@@ -15,10 +15,6 @@
     "aarch64-darwin": {
       "file": "Brisk-v{version}-macos.dmg",
       "hash": "sha256-DL3uxzTrJlhspnwI0abk3JrqgusLckS7m/bUs0EtPMo="
-    },
-    "x86_64-darwin": {
-      "file": "Brisk-v{version}-macos.dmg",
-      "hash": "sha256-DL3uxzTrJlhspnwI0abk3JrqgusLckS7m/bUs0EtPMo="
     }
   }
 }

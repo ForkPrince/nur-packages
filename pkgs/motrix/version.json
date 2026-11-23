@@ -12,10 +12,6 @@
       "file": "Motrix-{version}-arm64.dmg",
       "hash": "sha256-9UBzL2X5SnTUyYVE/QoV5rahPFBJ7DFECYdvBYaeD8Y="
     },
-    "x86_64-darwin": {
-      "file": "Motrix-{version}-x64.dmg",
-      "hash": "sha256-W7jc8mUYS7ZH0F28zOAi80QSta8p/qH/sjMgUpilmOs="
-    },
     "x86_64-linux": {
       "file": "Motrix-{version}-x86_64.AppImage",
       "hash": "sha256-OsGysyiFxXCu0HC5DWPDIG2axqOnOH27s8fMRcr4YCw="

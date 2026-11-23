@@ -18,11 +18,6 @@
       "hash": "sha256-zjDA4tinI7RlHpgN7w8ZqDipOaf89VxGV+kzvXvKR4s=",
       "unpack": false
     },
-    "x86_64-darwin": {
-      "file": "ABDownloadManager_{version}_mac_x64.tar.gz",
-      "hash": "sha256-H5WHTly6eBboRpViiZIyHqzE5jlIRCM/wHyd6YoLk8k=",
-      "unpack": false
-    },
     "aarch64-darwin": {
       "file": "ABDownloadManager_{version}_mac_arm64.tar.gz",
       "hash": "sha256-s0m0nswyl9SzuCrch+NeHVIVdbmmTYnlEJU1ZZiYj08=",

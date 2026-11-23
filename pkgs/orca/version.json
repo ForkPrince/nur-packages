@@ -11,10 +11,6 @@
     "aarch64-darwin": {
       "file": "orca-macos-arm64.dmg",
       "hash": "sha256-dMr7x9azwV1WqolgbXU6wx4uUf/kTBO2kXpqtQFMx9E="
-    },
-    "x86_64-darwin": {
-      "file": "orca-macos-x64.dmg",
-      "hash": "sha256-7V4xk9hokksF4ZLYgTAeCUdjcfSVWRQ7xapB1jqaYX4="
     }
   }
 }

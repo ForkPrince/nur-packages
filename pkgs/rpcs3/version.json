@@ -13,13 +13,6 @@
       "query": "[0].assets[0].name",
       "hash": "sha256-BIeKNoKPVyPQuyv4nEBk4B4/C68FrTeawtFasdAiUQs=",
       "version": "build-0ba0a70b549ff1377f1a93a22c8703a129d123b8"
-    },
-    "x86_64-darwin": {
-      "repo": "RPCS3/rpcs3-binaries-mac",
-      "file": "rpcs3-v0.0.43-20645-0ba0a70b_macos.7z",
-      "query": "[0].assets[0].name",
-      "hash": "sha256-4MJulgm69dzgo9YjpXjYJLAhkBZIsy4wKWEidUICNgg=",
-      "version": "build-0ba0a70b549ff1377f1a93a22c8703a129d123b8"
     }
   }
 }

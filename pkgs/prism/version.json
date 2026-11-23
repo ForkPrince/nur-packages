@@ -12,10 +12,6 @@
       "file": "Prism_{version}_aarch64.dmg",
       "hash": "sha256-IdvlPrDtX4PsNpXwTGg5Pn4Ui9JSv3RmLHWx+0na67c="
     },
-    "x86_64-darwin": {
-      "file": "Prism_{version}_x64.dmg",
-      "hash": "sha256-W2N8hYLVAbClM7YYpAe1o1YLfdRGve6opFOFmCvE3wE="
-    },
     "x86_64-linux": {
       "file": "Prism_{version}_amd64.AppImage",
       "hash": "sha256-aNh/QkxGANkBzb1A4GPo3u58f+7fQd2qJtKI53c0aLs="

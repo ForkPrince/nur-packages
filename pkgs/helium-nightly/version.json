@@ -17,12 +17,6 @@
       "hash": "sha256-CyyCP1JJcbEdfbPKrKFWfQGJblWzSF5y7a3fNHINeIk=",
       "version": "0.22.2.1"
     },
-    "x86_64-darwin": {
-      "repo": "imputnet/helium-macos",
-      "file": "helium_{version}_x86_64-macos.dmg",
-      "hash": "sha256-2jWT9JEEB5e79jhUsZYmFEeWO01TDfSXRiRkiMM59bU=",
-      "version": "0.22.2.1"
-    },
     "aarch64-darwin": {
       "repo": "imputnet/helium-macos",
       "file": "helium_{version}_arm64-macos.dmg",

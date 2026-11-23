@@ -1,27 +1,9 @@
-{
-  retroarch-full,
-  stdenvNoCC,
-  fetchurl,
-  _7zz,
-  lib,
-}:
-if stdenvNoCC.hostPlatform.isDarwin
-then let
-  ver = lib.helper.read ./version.json;
-in
-  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-    pname = "retroarch";
-    inherit (ver) version;
+# pname = "retroarch";
+# description = "deprecated, use retroarch-full from nixpkgs 26.11 or unstable instead";
+# homepage = "https://libretro.com";
+{...}:
+throw ''
+  retroarch is deprecated and has been removed from this repository.
 
-    src = fetchurl (lib.helper.getSingle ver);
-
-    nativeBuildInputs = [_7zz];
-
-    meta = {
-      description = "Multi-platform emulator frontend for libretro cores";
-      homepage = "https://libretro.com";
-      maintainers = with lib.maintainers; [Prinky];
-      license = lib.licenses.gpl3Plus;
-    };
-  })
-else retroarch-full
+  Use retroarch-full from nixpkgs (26.11 or unstable) instead: pkgs.retroarch-full
+''

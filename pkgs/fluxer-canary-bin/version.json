@@ -7,10 +7,6 @@
   },
   "version": "2026.1120.172553",
   "platforms": {
-    "x86_64-darwin": {
-      "url": "https://pkgs.fluxer.com/desktop/canary/darwin/x64/Fluxer-Canary-{version}-mac-universal.zip",
-      "hash": "sha256-Lt+336cowjXFZr0geAAQ91OFJez4JOLxo1FTZLf2wm0="
-    },
     "aarch64-darwin": {
       "url": "https://pkgs.fluxer.com/desktop/canary/darwin/arm64/Fluxer-Canary-{version}-mac-universal.zip",
       "hash": "sha256-Lt+336cowjXFZr0geAAQ91OFJez4JOLxo1FTZLf2wm0="

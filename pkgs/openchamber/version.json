@@ -12,10 +12,6 @@
       "file": "OpenChamber-{version}-mac-arm64.dmg",
       "hash": "sha256-M2yjUUeXVozVSjc0N3fi0qf/37Sr0YVpr802+0X8Ouk="
     },
-    "x86_64-darwin": {
-      "file": "OpenChamber-{version}-mac-x64.dmg",
-      "hash": "sha256-T7XIQMhTo9Yj/VOKy1z2sWHc5g8SdiiiZPqLEsFZfI8="
-    },
     "aarch64-linux": {
       "file": "OpenChamber-{version}-linux-arm64.AppImage",
       "hash": "sha256-wXo8x44Fs2Ywij+wjlftWMSRbChD0vAqNhRwfqi7t4g="

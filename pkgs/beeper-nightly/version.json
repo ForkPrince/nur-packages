@@ -24,14 +24,6 @@
       ],
       "hash": "sha256-PxOG+S89QXq5VreQV2OIpfxpdsv09Ov6JPijT+k0GZI="
     },
-    "x86_64-darwin": {
-      "url": "https://beeper-desktop.download.beeper.com/builds/Beeper%20Nightly-4.3.349-mac.zip",
-      "substitutions": [
-        "macos",
-        "x64"
-      ],
-      "hash": "sha256-OvdJuzDEYVmXXLcetxqn96J6BMwmp9Q5LRdW19xbfr0="
-    },
     "aarch64-darwin": {
       "url": "https://beeper-desktop.download.beeper.com/builds/Beeper%20Nightly-4.3.349-arm64-mac.zip",
       "substitutions": [

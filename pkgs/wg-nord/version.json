@@ -19,10 +19,6 @@
     "aarch64-darwin": {
       "file": "wg-nord-1.0.1-aarch64-apple-darwin.tar.gz",
       "hash": "sha256-FWkq7SJoHK++s9ikFL4mXlMIJEWM/B08h3ozQihYpo0="
-    },
-    "x86_64-darwin": {
-      "file": "wg-nord-1.0.1-x86_64-apple-darwin.tar.gz",
-      "hash": "sha256-8RgL0VLDa08/LBzu3IuRWRf8ze289lk8WMJLb53e2hc="
     }
   }
 }

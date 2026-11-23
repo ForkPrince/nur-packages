@@ -12,10 +12,6 @@
       "file": "TinyWiiBackupManager-v{version}-macos-universal.dmg",
       "hash": "sha256-N381M8LyVyETeB7iKuBtBxo4UTFSDJX0nfH8nBeebO0="
     },
-    "x86_64-darwin": {
-      "file": "TinyWiiBackupManager-v{version}-macos-universal.dmg",
-      "hash": "sha256-N381M8LyVyETeB7iKuBtBxo4UTFSDJX0nfH8nBeebO0="
-    },
     "x86_64-linux": {
       "file": "TinyWiiBackupManager-v{version}-linux-x86_64.AppImage",
       "hash": "sha256-wHr4rak5G+5cCCxjyws//UJwFf1tgxpFP0tz1ZikTQU="

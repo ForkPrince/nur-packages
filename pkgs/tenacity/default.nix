@@ -1,27 +1,9 @@
-{
-  stdenvNoCC,
-  fetchurl,
-  tenacity,
-  _7zz,
-  lib,
-}:
-if stdenvNoCC.hostPlatform.isDarwin
-then let
-  ver = lib.helper.read ./version.json;
-in
-  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-    pname = "tenacity";
-    inherit (ver) version;
+# pname = "tenacity";
+# description = "deprecated, use tenacity from nixpkgs 26.11 or unstable instead";
+# homepage = "https://tenacityaudio.org/";
+{...}:
+throw ''
+  tenacity is deprecated and has been removed from this repository.
 
-    src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
-
-    nativeBuildInputs = [_7zz];
-
-    meta = {
-      description = "Sound editor with graphical UI";
-      homepage = "https://tenacityaudio.org/";
-      maintainers = with lib.maintainers; [Prinky];
-      license = lib.licenses.gpl2Plus;
-    };
-  })
-else tenacity
+  Use tenacity from nixpkgs (26.11 or unstable) instead: pkgs.tenacity
+''

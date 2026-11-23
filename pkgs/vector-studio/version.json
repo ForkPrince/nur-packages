@@ -11,11 +11,6 @@
       "url": "https://downloads.tenzen.studio/vector-studio/stable/darwin/0.1.36/Vector-Studio-0.1.36-mac-arm64.dmg",
       "hash": "sha256-q6t1eu86olGDuWjOxnf+KN08rXjiWwKbqenDdVg2aC4="
     },
-    "x86_64-darwin": {
-      "redirect_url": "https://tenzen.studio/api/v1/vector-studio/download?platform=darwin&arch=x64&kind=dmg",
-      "url": "https://downloads.tenzen.studio/vector-studio/stable/darwin/0.1.36/Vector-Studio-0.1.36-mac-x64.dmg",
-      "hash": "sha256-ZsUDyq/WctcBa8QtYT/RCXuwVFCjml1coFNgw6JyGNw="
-    },
     "aarch64-linux": {
       "redirect_url": "https://tenzen.studio/api/v1/vector-studio/download?platform=linux&arch=arm64&kind=appimage",
       "url": "https://downloads.tenzen.studio/vector-studio/stable/linux/0.1.36/Vector-Studio-0.1.36-linux-arm64.AppImage",

@@ -12,10 +12,6 @@
       "file": "GenOffice-{version}.AppImage",
       "hash": "sha256-eLnO6QQO4ZviM4IbAl6ijg1WVijy9QoKu1iIxx3ujKY="
     },
-    "x86_64-darwin": {
-      "file": "GenOffice-{version}.dmg",
-      "hash": "sha256-UzRulmB9QAJu3mFoKvJVNJgV1ig6/lCiW4W5cIKxrBw="
-    },
     "aarch64-darwin": {
       "file": "GenOffice-{version}-arm64.dmg",
       "hash": "sha256-nvfK172yxnklxdRseDrBnNwYVgpzUPOZ1cwiApp9/n4="

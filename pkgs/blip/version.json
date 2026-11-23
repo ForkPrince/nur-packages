@@ -32,14 +32,6 @@
         "https://formulae.brew.sh/api/cask/blip.json"
       ],
       "hash": "sha256-EQnO1OgEAmxzuxCMKpsa4TJNmalLnX8XJdfB8ZGzeCU="
-    },
-    "x86_64-darwin": {
-      "url_path": ".url",
-      "url": "https://f000.backblazeb2.com/file/push-mac/Blip-20261029214736.zip",
-      "substitutions": [
-        "https://formulae.brew.sh/api/cask/blip.json"
-      ],
-      "hash": "sha256-EQnO1OgEAmxzuxCMKpsa4TJNmalLnX8XJdfB8ZGzeCU="
     }
   }
 }

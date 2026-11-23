@@ -15,10 +15,6 @@
       "url": "https://github.com/CodebuffAI/codebuff-community/releases/download/freebuff-v{version}/freebuff-linux-arm64.tar.gz",
       "hash": "sha256-7XUqWJWKAaMXLuvdo7f6v/J9TcCZ6Uxdijptpdl2kqM="
     },
-    "x86_64-darwin": {
-      "url": "https://github.com/CodebuffAI/codebuff-community/releases/download/freebuff-v{version}/freebuff-darwin-x64.tar.gz",
-      "hash": "sha256-mCgIPc0NOfACnT7aqBGSKlwa3InqTktwi+01P2i4krw="
-    },
     "aarch64-darwin": {
       "url": "https://github.com/CodebuffAI/codebuff-community/releases/download/freebuff-v{version}/freebuff-darwin-arm64.tar.gz",
       "hash": "sha256-qj9bU3jyOVIoeyJXPzycL9srBNMHdvLjSyGAuDJWU24="

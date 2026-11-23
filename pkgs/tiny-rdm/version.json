@@ -11,10 +11,6 @@
     "aarch64-darwin": {
       "file": "TinyRDM_{version}_mac_arm64.dmg",
       "hash": "sha256-quvFih+XUFdDvwXyqxz8Xnw+WEHZAmatg26qt0Q18aM="
-    },
-    "x86_64-darwin": {
-      "file": "TinyRDM_{version}_mac_intel.dmg",
-      "hash": "sha256-PY5h+kdK5Qth5BpiOEH83XYpYV+hBXWPKED/91/oV60="
     }
   }
 }

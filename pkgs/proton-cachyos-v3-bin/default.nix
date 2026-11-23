@@ -1,17 +1,15 @@
 {
-  type ? "v1",
   stdenvNoCC,
   fetchzip,
   lib,
 }: let
   ver = lib.helper.read ./version.json;
-  display = "Proton-CachyOS-${type}";
 in
   stdenvNoCC.mkDerivation rec {
-    pname = "proton-cachyos-${type}-bin";
+    pname = "proton-cachyos-v3-bin";
     inherit (ver) version;
 
-    src = fetchzip (lib.helper.getVariant type ver);
+    src = fetchzip (lib.helper.getSingle ver);
 
     dontUnpack = true;
     dontConfigure = true;
@@ -39,7 +37,7 @@ in
 
     preFixup = ''
       sed -i \
-        "s|proton-cachyos-[^\"]*|${display}|g" \
+        "s|proton-cachyos-[^\"]*|Proton-CachyOS-v3|g" \
         "$steamcompattool/compatibilitytool.vdf"
     '';
 

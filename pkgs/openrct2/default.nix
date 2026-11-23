@@ -1,28 +1,9 @@
-{
-  stdenvNoCC,
-  openrct2,
-  fetchurl,
-  unzip,
-  lib,
-}:
-if stdenvNoCC.hostPlatform.isDarwin
-then let
-  ver = lib.helper.read ./version.json;
-in
-  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-    pname = "openrct2";
-    inherit (ver) version;
+# pname = "openrct2";
+# description = "deprecated, use openrct2 from nixpkgs 26.11 or unstable instead";
+# homepage = "https://openrct2.io/";
+{...}:
+throw ''
+  openrct2 is deprecated and has been removed from this repository.
 
-    src = fetchurl (lib.helper.getSingle ver);
-
-    nativeBuildInputs = [unzip];
-
-    meta = {
-      description = "Open source re-implementation of RollerCoaster Tycoon 2 (original game required)";
-      homepage = "https://openrct2.io/";
-      downloadPage = "https://github.com/OpenRCT2/OpenRCT2/releases";
-      maintainers = with lib.maintainers; [Prinky];
-      license = lib.licenses.gpl3Only;
-    };
-  })
-else openrct2
+  Use openrct2 from nixpkgs (26.11 or unstable) instead: pkgs.openrct2
+''

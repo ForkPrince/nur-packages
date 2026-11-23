@@ -10,10 +10,6 @@
     "aarch64-darwin": {
       "file": "rustdesk-{version}-aarch64.dmg",
       "hash": "sha256-5tMPoWM9dyxIk1kHwgjKTlVahW+yA4rzqqh6MnwpNgs="
-    },
-    "x86_64-darwin": {
-      "file": "rustdesk-{version}-x86_64.dmg",
-      "hash": "sha256-dNBuay4nOhKOjTYxPjDUfbIGP0U6QjXtTZ5c39+b5Tg="
     }
   }
 }

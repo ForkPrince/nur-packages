@@ -10,10 +10,6 @@
     "aarch64-darwin": {
       "file": "peazip-{version}.DARWIN.aarch64.dmg",
       "hash": "sha256-sx7IHhPb4hphiWN4VeVbgnssfeBGupcGC2iazj9iSPk="
-    },
-    "x86_64-darwin": {
-      "file": "peazip-{version}.DARWIN.x86_64.dmg",
-      "hash": "sha256-H5FPS6083fIBznbLrlSyAmfrCP0jHkCvAggn45XE+EE="
     }
   }
 }

@@ -12,10 +12,6 @@
       "file": "designcraft-{version}-macos-universal.dmg",
       "hash": "sha256-9Fsr9VQ8HYw30JqXHplCDW7z2XtuvjPjGzbSo8OesMI="
     },
-    "x86_64-darwin": {
-      "file": "designcraft-{version}-macos-universal.dmg",
-      "hash": "sha256-9Fsr9VQ8HYw30JqXHplCDW7z2XtuvjPjGzbSo8OesMI="
-    },
     "x86_64-linux": {
       "file": "designcraft-{version}-linux-x86_64.AppImage",
       "hash": "sha256-+db9a7GkIYUCQ8DUvkQjVxOp7Fsm+L8dW6h6/Pj5FTQ="

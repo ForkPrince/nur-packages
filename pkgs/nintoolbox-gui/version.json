@@ -12,10 +12,6 @@
       "file": "nintoolbox-gui-macos-universal.tar.gz",
       "hash": "sha256-WX/ofephTQYrG8HvPJnMM5PMpy/izI6Rgsv1MdlICcU="
     },
-    "x86_64-darwin": {
-      "file": "nintoolbox-gui-macos-universal.tar.gz",
-      "hash": "sha256-WX/ofephTQYrG8HvPJnMM5PMpy/izI6Rgsv1MdlICcU="
-    },
     "x86_64-linux": {
       "file": "nintoolbox-gui-linux-x86_64.tar.gz",
       "hash": "sha256-nfxJ3+6oawo9LayBXXCc3cCBmOLroSlIXOulHKh9Wig="

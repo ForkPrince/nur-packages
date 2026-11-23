@@ -1,4 +1,5 @@
 {
+  emerald-legacy-launcher,
   stdenvNoCC,
   fetchurl,
   _7zz,
@@ -26,12 +27,4 @@ in
 
       nativeBuildInputs = [_7zz];
     })
-  else
-    lib.helper.mkAppImage {
-      inherit pname version src meta;
-
-      startupWMClass = "emerald-legacy-launcher";
-      desktopName = "LCE Emerald Launcher";
-      icon = "emerald-legacy-launcher";
-      categories = ["Game"];
-    }
+  else emerald-legacy-launcher
