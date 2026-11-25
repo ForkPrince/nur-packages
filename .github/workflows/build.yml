@@ -236,16 +236,16 @@ jobs:
             nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz
           - os: ubuntu-latest
             platform: linux
-            channel: "26.05"
-            nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-26.05.tar.gz
+            channel: "26.11"
+            nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-26.11.tar.gz
           - os: macos-latest
             platform: darwin
             channel: unstable
             nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz
           # - os: macos-latest
           #   platform: darwin
-          #   channel: "25.11"
-          #   nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-25.11.tar.gz
+          #   channel: "26.11"
+          #   nixPath: nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-26.11.tar.gz
 
     runs-on: ${{ matrix.os }}
     steps:
