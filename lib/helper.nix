@@ -8,11 +8,13 @@
 
   gitlabUrl = instance: repo: tagPrefix: version: file: sanitizeUrl "${instance}/${repo}/releases/download/${tagPrefix}${version}/${file}";
 
-  sanitizeName = name:
-    builtins.replaceStrings
-    [" " "%20"]
-    ["-" "-"]
-    name;
+  sanitizeName = name: let
+    allowed = lib.stringToCharacters "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+._?=-";
+    decoded = builtins.replaceStrings [" " "%20"] ["-" "-"] name;
+    sanitized = lib.concatMapStrings (c: if builtins.elem c allowed then c else "-")
+      (lib.stringToCharacters decoded);
+  in
+    lib.concatStringsSep "-" (builtins.filter (s: builtins.isString s && s != "") (builtins.split "-" sanitized));
 
   sanitizeUrl = url:
     builtins.replaceStrings
@@ -20,8 +22,10 @@
     ["%20"]
     url;
 
-  extractName = url:
-    sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+  extractName = url: let
+    name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
+  in
+    if name == "" then "download" else name;
 
   substitute = {
     version,
