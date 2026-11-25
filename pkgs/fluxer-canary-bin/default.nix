@@ -1,44 +1,30 @@
 # Modified from https://github.com/NixOS/nixpkgs/pull/490554
 {
+  fluxer-canary-bin,
   stdenvNoCC,
   fetchurl,
   unzip,
   lib,
-}: let
+}:
+if stdenvNoCC.hostPlatform.isDarwin
+then let
   ver = lib.helper.read ./version.json;
-  platform = stdenvNoCC.hostPlatform.system;
-
-  pname = "fluxer-canary-bin";
-  src = fetchurl (lib.helper.getPlatform platform ver);
-  inherit (ver) version;
-
-  meta = {
-    description = "Fluxer desktop client (canary)";
-    homepage = "https://fluxer.app";
-    license = lib.licenses.agpl3Only;
-    platforms = lib.platforms.darwin ++ lib.platforms.linux;
-    mainProgram = "fluxer-canary-bin";
-    maintainers = with lib.maintainers; [WoutFontaine Prinky];
-  };
 in
-  if stdenvNoCC.hostPlatform.isDarwin
-  then
-    stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-      inherit pname version src meta;
+  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
+    pname = "fluxer-canary-bin";
 
-      nativeBuildInputs = [unzip];
-    })
-  else
-    lib.helper.mkAppImage {
-      inherit pname version src meta;
+    src = fetchurl (lib.helper.getSingle ver);
+    inherit (ver) version;
 
-      desktopId = "app.fluxer.FluxerDesktopCanary";
-      desktopName = "Fluxer Canary";
-      icon = "fluxer-canary";
-      startupWMClass = "app.fluxer.FluxerDesktopCanary";
-      categories = ["InstantMessaging"];
+    nativeBuildInputs = [unzip];
 
-      profile = ''
-        export FLUXER_DISABLE_DESKTOP_FILE=1
-      '';
-    }
+    meta = {
+      description = "Fluxer desktop client (canary)";
+      homepage = "https://fluxer.app";
+      license = lib.licenses.agpl3Only;
+      platforms = lib.platforms.darwin;
+      mainProgram = "fluxer-canary-bin";
+      maintainers = with lib.maintainers; [WoutFontaine Prinky];
+    };
+  })
+else fluxer-canary-bin

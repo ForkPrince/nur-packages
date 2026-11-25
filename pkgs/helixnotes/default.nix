@@ -1,37 +1,29 @@
 {
+  helixnotes,
   stdenvNoCC,
   fetchurl,
   _7zz,
   lib,
-}: let
+}:
+if stdenvNoCC.hostPlatform.isDarwin
+then let
   ver = lib.helper.read ./version.json;
-
-  pname = "helixnotes";
-  inherit (ver.platforms.${stdenvNoCC.hostPlatform.system}) version;
-  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
-
-  meta = {
-    description = "A local, open-source Markdown note-taking app.";
-    homepage = "https://helixnotes.com";
-    maintainers = with lib.maintainers; [Prinky];
-    license = lib.licenses.agpl3Plus;
-    platforms = lib.platforms.darwin ++ ["x86_64-linux"];
-    mainProgram = "helixnotes";
-  };
 in
-  if stdenvNoCC.hostPlatform.isDarwin
-  then
-    stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-      inherit pname version src meta;
+  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
+    pname = "helixnotes";
 
-      nativeBuildInputs = [_7zz];
-    })
-  else
-    lib.helper.mkAppImage {
-      inherit pname version src meta;
+    src = fetchurl (lib.helper.getSingle ver);
+    inherit (ver) version;
 
-      desktopName = "HelixNotes";
-      desktopId = "HelixNotes";
-      categories = ["Utility" "Office"];
-      startupWMClass = "helixnotes";
-    }
+    nativeBuildInputs = [_7zz];
+
+    meta = {
+      description = "A local, open-source Markdown note-taking app.";
+      homepage = "https://helixnotes.com";
+      maintainers = with lib.maintainers; [Prinky];
+      license = lib.licenses.agpl3Plus;
+      platforms = lib.platforms.darwin;
+      mainProgram = "helixnotes";
+    };
+  })
+else helixnotes
