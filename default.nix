@@ -80,6 +80,7 @@
     xuan = lib.callPackage ./pkgs/xuan {};
     sfw = lib.callPackage ./pkgs/sfw {};
     orb = lib.callPackage ./pkgs/orb {};
+    hex = lib.callPackage ./pkgs/hex {};
     fx = lib.callPackage ./pkgs/fx {};
 
     keka-external-helper = lib.callPackage ./pkgs/keka-external-helper {};

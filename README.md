@@ -74,6 +74,7 @@ This repository contains three types of packages:
 | [`helium-nightly`](pkgs/helium-nightly/default.nix) | [helium](https://github.com/imputnet/helium), private, fast, and honest web browser (nightly builds) |
 | [`helixnotes`](pkgs/helixnotes/default.nix) | [helixnotes](https://helixnotes.com), a local, open-source Markdown note-taking app. |
 | [`heroic`](pkgs/heroic/default.nix) | [heroic](https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher), native GOG, Epic, and Amazon Games Launcher for Linux, Windows and Mac |
+| [`hex`](pkgs/hex/default.nix) | [hex](https://anoma.ly/hex/), local voice dictation that transcribes on your device and pastes at the cursor |
 | [`highball`](pkgs/highball/default.nix) | [highball](https://gauthierpiarrette.github.io/highball/), run Windows games on Apple Silicon |
 | [`horizon`](pkgs/horizon/default.nix) | [horizon-launcher](https://playhorizon.dev/), launcher for Horizon, a Rust rewrite of the Minecraft: Java Edition client |
 | [`hyperkey`](pkgs/hyperkey/default.nix) | [hyperkey](https://hyperkey.app/), convert your caps lock key or any of your modifier keys to the hyper key |
