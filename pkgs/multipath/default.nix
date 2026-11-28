@@ -1,0 +1,38 @@
+{
+  stdenvNoCC,
+  fetchurl,
+  _7zz,
+  lib,
+}: let
+  ver = lib.helper.read ./version.json;
+
+  pname = "multipath";
+  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
+  inherit (ver) version;
+
+  meta = {
+    description = "Combine Wi-Fi, Ethernet and phone tethering into one faster connection";
+    homepage = "https://github.com/uditya-kumar/MultiPath";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [Prinky];
+    platforms = lib.platforms.darwin ++ ["x86_64-linux"];
+    mainProgram = pname;
+    sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+  };
+in
+  if stdenvNoCC.hostPlatform.isDarwin
+  then
+    stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
+      inherit pname version src meta;
+
+      nativeBuildInputs = [_7zz];
+    })
+  else
+    lib.helper.mkAppImage {
+      inherit pname version src meta;
+
+      desktopName = "MultiPath";
+      desktopComment = "Spreads the PC's traffic across several networks at once";
+      startupWMClass = pname;
+      categories = ["Network"];
+    }

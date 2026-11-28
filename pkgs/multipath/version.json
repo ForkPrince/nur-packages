@@ -1,0 +1,20 @@
+{
+  "name": "MultiPath",
+  "source": {
+    "type": "github-release",
+    "repo": "uditya-kumar/MultiPath",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "version": "1.2.0",
+  "platforms": {
+    "aarch64-darwin": {
+      "file": "MultiPath_{version}_aarch64.dmg",
+      "hash": "sha256-K6+XeACfyrvHO0hqWQJS6j9OQT47sYPv/3xcrWTinN4="
+    },
+    "x86_64-linux": {
+      "file": "MultiPath_{version}_amd64.AppImage",
+      "hash": "sha256-B7Y+LzZSXpxRvFOm/YUDKlTMdTmbpMU6C0rc8Qfg0so="
+    }
+  }
+}

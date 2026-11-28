@@ -22,6 +22,7 @@
     yapfast = lib.callPackage ./pkgs/yapfast {};
     venture = lib.callPackage ./pkgs/venture {};
     cordial = lib.callPackage ./pkgs/cordial {};
+    skykeep = lib.callPackage ./pkgs/skykeep {};
     sysbar = lib.callPackage ./pkgs/sysbar {};
 
     tinywiibackupmanager = lib.callPackage ./pkgs/tinywiibackupmanager {};
@@ -41,12 +42,14 @@
     ab-download-manager = lib.callPackage ./pkgs/abdm {};
     osu-tachyon = lib.callPackage ./pkgs/osu-tachyon {};
     openchamber = lib.callPackage ./pkgs/openchamber {};
+    wiicompiled = lib.callPackage ./pkgs/wiicompiled {};
     nintoolbox = lib.callPackage ./pkgs/nintoolbox {};
     oak-editor = lib.callPackage ./pkgs/oak-editor {};
     helixnotes = lib.callPackage ./pkgs/helixnotes {};
     moonplayer = lib.callPackage ./pkgs/moonplayer {};
     noisetorch = lib.callPackage ./pkgs/noisetorch {};
     streamnook = lib.callPackage ./pkgs/streamnook {};
+    multipath = lib.callPackage ./pkgs/multipath {};
     altersend = lib.callPackage ./pkgs/altersend {};
     genoffice = lib.callPackage ./pkgs/genoffice {};
     opentubex = lib.callPackage ./pkgs/opentubex {};

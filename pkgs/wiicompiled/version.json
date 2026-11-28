@@ -1,0 +1,24 @@
+{
+  "name": "WiiCompiled",
+  "source": {
+    "type": "github-release",
+    "repo": "patchzyy/Wiicompiled",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "version": "0.9.4",
+  "platforms": {
+    "aarch64-darwin": {
+      "file": "WiiCompiled-Setup-macos.run",
+      "hash": "sha256-qdCvo29fMqYWa5AhODpCMC940l0myUD+MzEFzkVpFRM="
+    },
+    "aarch64-linux": {
+      "file": "WiiCompiled-Setup-aarch64.AppImage",
+      "hash": "sha256-/tGDB/QEmZDhlrUB7k8msbXYyhKp9/mYEPy6VqTtZ+g="
+    },
+    "x86_64-linux": {
+      "file": "WiiCompiled-Setup-x86_64.AppImage",
+      "hash": "sha256-wKalVNxysAkpTzKsFdX0YJ/5xZIquHLEeY4po8L46qA="
+    }
+  }
+}

@@ -99,6 +99,7 @@ This repository contains three types of packages:
 | [`mocktail`](pkgs/mocktail/default.nix) | [mocktail](https://github.com/komaruworld/mocktail), play Roblox on Linux |
 | [`moonplayer`](pkgs/moonplayer/default.nix) | [moonplayer](https://github.com/coslyk/moonplayer), video player that can play online videos from YouTube, Bilibili etc |
 | [`motrix`](pkgs/motrix/default.nix) | [motrix](https://motrix.app/), a full-featured download manager |
+| [`multipath`](pkgs/multipath/default.nix) | [multipath](https://github.com/uditya-kumar/MultiPath), combine Wi-Fi, Ethernet and phone tethering into one faster connection |
 | [`muxy`](pkgs/muxy/default.nix) | [muxy](https://muxy.app/), lightweight and Memory efficient terminal for Mac built with SwiftUI and libghostty |
 | [`nexus-launcher`](pkgs/nexus-launcher/default.nix) | [nexus-launcher](https://github.com/domsvoboda/nexus-launcher), open-source Xbox-inspired launcher for Microsoft Store games on Linux |
 | [`nightcap`](pkgs/nightcap/default.nix) | [nightcap](https://github.com/CoderDayton/nightcap), roblox on Linux, tuned for desktop play |
@@ -156,6 +157,7 @@ This repository contains three types of packages:
 | [`screendrop`](pkgs/screendrop/default.nix) | [screendrop](https://github.com/fayazara/screendrop), deprecated, use screendrop from nixpkgs 26.11 or unstable instead |
 | [`serein`](pkgs/serein/default.nix) | [serein](https://github.com/ViceVerse-cz/Serein), tiny, performant & 100% native client for Discord made in Rust |
 | [`sfw`](pkgs/sfw/default.nix) | [sfw](https://github.com/SocketDev/sfw-free), wraps your package manager, preventing installation of malicious packages. |
+| [`skykeep`](pkgs/skykeep/default.nix) | [skykeep](https://github.com/YashwanthKamireddi/Skykeep), native iCloud client for Notes, Reminders, Calendar, Contacts, Drive and Photos |
 | [`sm64plus`](pkgs/sm64plus/default.nix) | [sm64plus](https://github.com/MorsGames/sm64plus), a standalone fork of the Super Mario 64 PC port with quality of life improvements |
 | [`sms-launcher`](pkgs/sms-launcher/default.nix) | [sms-launcher](https://github.com/chasem-dev/sms-launcher), setup, build, update, and play launcher for the Super Mario Sunshine PC port |
 | [`sonixd`](pkgs/sonixd/default.nix) | [sonixd](https://github.com/jeffvli/sonixd), full-featured Subsonic/Jellyfin compatible desktop music player |
@@ -184,6 +186,7 @@ This repository contains three types of packages:
 | [`waterfox-bin`](pkgs/waterfox-bin/default.nix) | [waterfox](https://www.waterfox.net/), fast and Private Web Browser |
 | [`wg-nord`](pkgs/wg-nord/default.nix) | [wg-nord](https://github.com/n-thumann/wg-nord), wireGuard configuration generator for NordVPN |
 | [`whisky`](pkgs/whisky/default.nix) | [whisky](https://frankea.github.io/Whisky), wine wrapper built with SwiftUI (frankea fork) |
+| [`wiicompiled`](pkgs/wiicompiled/default.nix) | [wiicompiled-setup](https://github.com/patchzyy/Wiicompiled), tool that statically recompiles your own Mario Kart Wii disc into a native PC port |
 | [`wiiudownloader`](pkgs/wiiudownloader/default.nix) | [wiiudownloader](https://github.com/Xpl0itU/WiiUDownloader), cross-platform Wii U NUS downloader for Windows, macOS & Linux |
 | [`wordcraft`](pkgs/wordcraft/default.nix) | [wordcraft](https://getartcraft.com/apps/wordcraft), deprecated, use wordcraft from nixpkgs 26.11 or unstable instead |
 | [`xuan`](pkgs/xuan/default.nix) | [xuan](https://github.com/silverling/xuan), an image editor for Linux, inspired by Compositor and ported from it. |
