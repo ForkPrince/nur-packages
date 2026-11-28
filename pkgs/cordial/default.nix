@@ -23,23 +23,12 @@
   lib,
 }: let
   ver = lib.helper.read ./version.json;
-
-  pname = "cordial";
-  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
-  inherit (ver) version;
-
-  meta = {
-    description = "Run Roblox's Android client natively on Linux";
-    homepage = "https://github.com/luohoa97/cordial";
-    license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [Prinky];
-    platforms = lib.platforms.linux;
-    mainProgram = "cordial";
-    sourceProvenance = [lib.sourceTypes.binaryNativeCode];
-  };
 in
   stdenvNoCC.mkDerivation rec {
-    inherit pname version src meta;
+    pname = "cordial";
+    inherit (ver) version;
+
+    src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
     nativeBuildInputs = [
       autoPatchelfHook
@@ -93,4 +82,14 @@ in
           --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules"
       done
     '';
+
+    meta = {
+      description = "Run Roblox's Android client natively on Linux";
+      homepage = "https://github.com/luohoa97/cordial";
+      license = lib.licenses.gpl3Only;
+      maintainers = with lib.maintainers; [Prinky];
+      platforms = lib.platforms.linux;
+      mainProgram = "cordial";
+      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+    };
   }

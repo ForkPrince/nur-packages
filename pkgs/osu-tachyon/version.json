@@ -15,11 +15,6 @@
       "file": "osu.app.Apple.Silicon.zip",
       "hash": "sha256-2IuCqUHFmmrr0zlIOwzbkPZZNwd82avK55Bc5juPFO8=",
       "unpack": true
-    },
-    "x86_64-darwin": {
-      "file": "osu.app.Intel.zip",
-      "hash": "sha256-exG9whIle2XvroW3B8UzVF7FBpRnHog9taM3eXL1uXQ=",
-      "unpack": true
     }
   }
 }

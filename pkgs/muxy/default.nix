@@ -10,7 +10,7 @@ in
     pname = "muxy";
     inherit (ver) version;
 
-    src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
+    src = fetchurl (lib.helper.getSingle ver);
 
     nativeBuildInputs = [_7zz];
 

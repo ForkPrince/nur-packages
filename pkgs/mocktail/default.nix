@@ -31,23 +31,12 @@
   lib,
 }: let
   ver = lib.helper.read ./version.json;
-
-  pname = "mocktail";
-  src = fetchurl (lib.helper.getSingle ver);
-  inherit (ver) version;
-
-  meta = {
-    description = "Play Roblox on Linux";
-    homepage = "https://github.com/komaruworld/mocktail";
-    license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [Prinky];
-    platforms = ["x86_64-linux"];
-    mainProgram = "mocktail";
-    sourceProvenance = [lib.sourceTypes.binaryNativeCode];
-  };
 in
   stdenvNoCC.mkDerivation rec {
-    inherit pname version src meta;
+    pname = "mocktail";
+    inherit (ver) version;
+
+    src = fetchurl (lib.helper.getSingle ver);
 
     nativeBuildInputs = [
       autoPatchelfHook
@@ -117,4 +106,14 @@ in
           --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules"
       done
     '';
+
+    meta = {
+      description = "Play Roblox on Linux";
+      homepage = "https://github.com/komaruworld/mocktail";
+      license = lib.licenses.asl20;
+      maintainers = with lib.maintainers; [Prinky];
+      platforms = ["x86_64-linux"];
+      mainProgram = "mocktail";
+      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+    };
   }

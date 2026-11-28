@@ -1,0 +1,24 @@
+{
+  "name": "Hex",
+  "source": {
+    "type": "github-release",
+    "repo": "anomalyco/hex",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "version": "3.5.2",
+  "platforms": {
+    "x86_64-linux": {
+      "file": "hex-{version}-linux-x64.deb",
+      "hash": "sha256-eFy1ArtVaGXNptqe7LQaUvUHNOzvPfvemRVfd21/NGI="
+    },
+    "aarch64-linux": {
+      "file": "hex-{version}-linux-arm64.deb",
+      "hash": "sha256-AqOMv9cBvcA4f+w6wsA4JIgWIfFg4wb2sNduFwwYmMo="
+    },
+    "aarch64-darwin": {
+      "file": "hex-{version}-macos-arm64.dmg",
+      "hash": "sha256-droYoowNmsfeFPk3ggXMMNlpcyudXBAXTGqfLo2a0lA="
+    }
+  }
+}

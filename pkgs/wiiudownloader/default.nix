@@ -16,7 +16,7 @@
     maintainers = with lib.maintainers; [Prinky];
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
-    mainProgram = "WiiUDownloader";
+    mainProgram = "wiiudownloader";
   };
 in
   if stdenvNoCC.hostPlatform.isDarwin
@@ -29,6 +29,8 @@ in
   else
     lib.helper.mkAppImage {
       inherit pname version src meta;
+
+      extractor = lib.helper.extractAppImageDwarfs;
 
       desktopId = "WiiUDownloader";
       desktopName = "WiiUDownloader";

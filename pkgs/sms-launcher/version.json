@@ -12,10 +12,6 @@
       "file": "SMS-Launcher-{version}-mac-universal.dmg",
       "hash": "sha256-l3v7P3lNElmaJiJ6fbvEFIjVuTr6NQL5MUl4xl5/W7M="
     },
-    "x86_64-darwin": {
-      "file": "SMS-Launcher-{version}-mac-universal.dmg",
-      "hash": "sha256-l3v7P3lNElmaJiJ6fbvEFIjVuTr6NQL5MUl4xl5/W7M="
-    },
     "x86_64-linux": {
       "file": "SMS-Launcher.AppImage",
       "hash": "sha256-BEs1fs4i0eAmhpzuSKgB8Cal3J7C/Rvj5C9DiaCw/Ak="

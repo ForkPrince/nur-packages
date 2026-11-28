@@ -15,10 +15,6 @@
       "url": "https://cdn1.waterfox.net/waterfox/releases/{version}/Linux_aarch64/waterfox-{version}.tar.bz2",
       "hash": "sha256-ZYa3FbSskubkzt5TR+IKHTpFb4/mZRsZNBEyWmbi4mE="
     },
-    "x86_64-darwin": {
-      "url": "https://cdn.waterfox.com/waterfox/releases/{version}/Darwin_x86_64-aarch64/Waterfox {version}.dmg",
-      "hash": "sha256-xpTwWJI0SUe9kT7MZZyiFEKSr/X12wGdxuPr8K3XaVI="
-    },
     "aarch64-darwin": {
       "url": "https://cdn.waterfox.com/waterfox/releases/{version}/Darwin_x86_64-aarch64/Waterfox {version}.dmg",
       "hash": "sha256-xpTwWJI0SUe9kT7MZZyiFEKSr/X12wGdxuPr8K3XaVI="

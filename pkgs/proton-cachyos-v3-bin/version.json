@@ -1,0 +1,15 @@
+{
+  "name": "Proton CachyOS",
+  "source": {
+    "type": "github-release",
+    "repo": "CachyOS/proton-cachyos",
+    "skip_prerelease": true
+  },
+  "asset": {
+    "file": "proton-{version}-x86_64_v3.tar.xz",
+    "unpack": true
+  },
+  "force": true,
+  "version": "cachyos-11.0-20261015-slr",
+  "hash": "sha256-USZ7wVV069xmGJdtyg6b/pdv7qqLkUkSZEyHiiVIs1o="
+}

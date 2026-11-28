@@ -1,43 +1,9 @@
-{
-  fetchFromGitHub,
-  zig_0_17,
-  stdenv,
-  lib,
-}:
-stdenv.mkDerivation (finalAttrs: {
-  pname = "fx";
-  version = "0.0.18";
+# pname = "fx";
+# description = "deprecated, use fx-sh from nixpkgs 26.11 or unstable instead";
+# homepage = "https://fx.sh";
+{...}:
+throw ''
+  fx is deprecated and has been removed from this repository.
 
-  src = fetchFromGitHub {
-    owner = "vercel-labs";
-    repo = "fx";
-    rev = "v${finalAttrs.version}";
-    hash = "sha256-4fO/tDl1BwP1ZMFx2s9GK/vBd74dGe8KDdN6B5/+A2E=";
-  };
-
-  nativeBuildInputs = [
-    zig_0_17
-  ];
-
-  buildPhase = ''
-    runHook preBuild
-    zig build -Doptimize=ReleaseSafe -Dcpu=baseline
-    runHook postBuild
-  '';
-
-  installPhase = ''
-    runHook preInstall
-    install -Dm755 zig-out/bin/fx $out/bin/fx
-    runHook postInstall
-  '';
-
-  meta = {
-    description = "Unix-like coding agent";
-    homepage = "https://fx.sh";
-    changelog = "https://github.com/vercel-labs/fx/releases/tag/v${finalAttrs.version}";
-    license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [Prinky];
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
-    mainProgram = "fx";
-  };
-})
+  Use fx-sh from nixpkgs (26.11 or unstable) instead: pkgs.fx-sh
+''

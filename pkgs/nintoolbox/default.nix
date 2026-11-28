@@ -12,11 +12,6 @@
 }: let
   ver = lib.helper.read ./version.json;
 
-  pname = "nintoolbox";
-  inherit (ver) version;
-
-  src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
-
   tools = [
     "ctrtool"
     "vgmtrans"
@@ -47,19 +42,12 @@
     "seeddb.bin"
     "title.keys"
   ];
-
-  meta = {
-    description = "Toolbox for Nintendo game file formats";
-    homepage = "https://github.com/quatric/nintoolbox";
-    maintainers = with lib.maintainers; [Prinky];
-    license = lib.licenses.gpl3Only;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
-    sourceProvenance = [lib.sourceTypes.binaryNativeCode];
-    mainProgram = "wszst";
-  };
 in
   stdenvNoCC.mkDerivation {
-    inherit pname version src meta;
+    pname = "nintoolbox";
+    inherit (ver) version;
+
+    src = fetchurl (lib.helper.getPlatform stdenvNoCC.hostPlatform.system ver);
 
     sourceRoot = ".";
 
@@ -93,4 +81,14 @@ in
 
       runHook postInstall
     '';
+
+    meta = {
+      description = "Toolbox for Nintendo game file formats";
+      homepage = "https://github.com/quatric/nintoolbox";
+      maintainers = with lib.maintainers; [Prinky];
+      license = lib.licenses.gpl3Only;
+      platforms = lib.platforms.linux ++ lib.platforms.darwin;
+      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+      mainProgram = "wszst";
+    };
   }

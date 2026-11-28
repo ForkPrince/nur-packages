@@ -22,7 +22,9 @@
     yapfast = lib.callPackage ./pkgs/yapfast {};
     venture = lib.callPackage ./pkgs/venture {};
     cordial = lib.callPackage ./pkgs/cordial {};
+    skykeep = lib.callPackage ./pkgs/skykeep {};
     sysbar = lib.callPackage ./pkgs/sysbar {};
+    stud = lib.callPackage ./pkgs/stud {};
 
     tinywiibackupmanager = lib.callPackage ./pkgs/tinywiibackupmanager {};
     note-block-studio = lib.callPackage ./pkgs/note-block-studio {};
@@ -41,12 +43,14 @@
     ab-download-manager = lib.callPackage ./pkgs/abdm {};
     osu-tachyon = lib.callPackage ./pkgs/osu-tachyon {};
     openchamber = lib.callPackage ./pkgs/openchamber {};
+    wiicompiled = lib.callPackage ./pkgs/wiicompiled {};
     nintoolbox = lib.callPackage ./pkgs/nintoolbox {};
     oak-editor = lib.callPackage ./pkgs/oak-editor {};
     helixnotes = lib.callPackage ./pkgs/helixnotes {};
     moonplayer = lib.callPackage ./pkgs/moonplayer {};
     noisetorch = lib.callPackage ./pkgs/noisetorch {};
     streamnook = lib.callPackage ./pkgs/streamnook {};
+    multipath = lib.callPackage ./pkgs/multipath {};
     altersend = lib.callPackage ./pkgs/altersend {};
     genoffice = lib.callPackage ./pkgs/genoffice {};
     opentubex = lib.callPackage ./pkgs/opentubex {};
@@ -76,6 +80,7 @@
     xuan = lib.callPackage ./pkgs/xuan {};
     sfw = lib.callPackage ./pkgs/sfw {};
     orb = lib.callPackage ./pkgs/orb {};
+    hex = lib.callPackage ./pkgs/hex {};
     fx = lib.callPackage ./pkgs/fx {};
 
     keka-external-helper = lib.callPackage ./pkgs/keka-external-helper {};
@@ -196,9 +201,9 @@
     luxtorpeda-bin = lib.callPackage ./pkgs/luxtorpeda-bin {};
     boxtron-bin = lib.callPackage ./pkgs/boxtron-bin {};
 
-    proton-cachyos-arm-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "arm";};
-    proton-cachyos-v1-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "v1";};
-    proton-cachyos-v3-bin = lib.callPackage ./pkgs/proton-cachyos-bin {type = "v3";};
+    proton-cachyos-arm-bin = lib.callPackage ./pkgs/proton-cachyos-arm-bin {};
+    proton-cachyos-v1-bin = lib.callPackage ./pkgs/proton-cachyos-v1-bin {};
+    proton-cachyos-v3-bin = lib.callPackage ./pkgs/proton-cachyos-v3-bin {};
 
     openemu-meta = lib.callPackage ./pkgs/openemu-meta {
       inherit openemu openemu-silicon;

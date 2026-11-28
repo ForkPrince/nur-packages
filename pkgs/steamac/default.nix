@@ -19,6 +19,6 @@ in
       homepage = "https://github.com/fxgl/steamac";
       maintainers = with lib.maintainers; [Prinky];
       license = lib.licenses.asl20;
-      platforms = ["aarch64-darwin"];
+      platforms = lib.platforms.darwin;
     };
   })

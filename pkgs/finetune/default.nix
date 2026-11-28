@@ -1,23 +1,9 @@
-{
-  stdenvNoCC,
-  fetchurl,
-  _7zz,
-  lib,
-}: let
-  ver = lib.helper.read ./version.json;
-in
-  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-    pname = "finetune";
-    inherit (ver) version;
+# pname = "finetune";
+# description = "deprecated, use finetune from nixpkgs 26.11 or unstable instead";
+# homepage = "https://github.com/ronitsingh10/FineTune";
+{...}:
+throw ''
+  finetune is deprecated and has been removed from this repository.
 
-    src = fetchurl (lib.helper.getSingle ver);
-
-    nativeBuildInputs = [_7zz];
-
-    meta = {
-      description = "Per-application volume mixer, equalizer, and audio router";
-      homepage = "https://github.com/ronitsingh10/FineTune";
-      maintainers = with lib.maintainers; [Prinky];
-      license = lib.licenses.gpl3;
-    };
-  })
+  Use finetune from nixpkgs (26.11 or unstable) instead: pkgs.finetune
+''

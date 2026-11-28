@@ -20,7 +20,7 @@
       isc
     ];
     maintainers = with lib.maintainers; [Prinky];
-    platforms = lib.platforms.linux ++ ["aarch64-darwin"];
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
     mainProgram = "sonora";
     sourceProvenance = [lib.sourceTypes.binaryNativeCode];
   };

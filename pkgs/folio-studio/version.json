@@ -4,27 +4,22 @@
     "type": "redirect",
     "version_regex": "([0-9]+\\.[0-9]+\\.[0-9]+)"
   },
-  "version": "0.1.20",
+  "version": "0.1.18",
   "platforms": {
     "aarch64-darwin": {
       "redirect_url": "https://tenzen.studio/api/v1/folio-studio/download?platform=darwin&arch=arm64&kind=dmg",
-      "url": "https://downloads.tenzen.studio/folio-studio/stable/darwin/0.1.20/Folio-Studio-0.1.20-mac-arm64.dmg",
-      "hash": "sha256-GfXZ9+qgenv+2t2sRPAIIXCiFzwNI/H454xlXugGx4M="
-    },
-    "x86_64-darwin": {
-      "redirect_url": "https://tenzen.studio/api/v1/folio-studio/download?platform=darwin&arch=x64&kind=dmg",
-      "url": "https://downloads.tenzen.studio/folio-studio/stable/darwin/0.1.20/Folio-Studio-0.1.20-mac-x64.dmg",
-      "hash": "sha256-44ubYscj7Jju86YBXQDuWkKyLCuYfKhM2XzizgBeXuo="
+      "url": "https://downloads.tenzen.studio/folio-studio/stable/darwin/0.1.18/Folio-Studio-0.1.18-mac-arm64.dmg",
+      "hash": "sha256-J9ryyz7BOLfGu6HVGM+b5pY++itdSo4MneyosQH4WIY="
     },
     "aarch64-linux": {
       "redirect_url": "https://tenzen.studio/api/v1/folio-studio/download?platform=linux&arch=arm64&kind=appimage",
-      "url": "https://downloads.tenzen.studio/folio-studio/stable/linux/0.1.20/Folio-Studio-0.1.20-linux-arm64.AppImage",
-      "hash": "sha256-xiV5M/4VMOh8b+jm6zoDyWfylnSjQmrv5MpUfRuRmF0="
+      "url": "https://downloads.tenzen.studio/folio-studio/stable/linux/0.1.18/Folio-Studio-0.1.18-linux-arm64.AppImage",
+      "hash": "sha256-fFJc1zvxT+PmEbbYHaEfxpNgfMb03YzhyhfBkaCdQ8E="
     },
     "x86_64-linux": {
       "redirect_url": "https://tenzen.studio/api/v1/folio-studio/download?platform=linux&arch=x64&kind=appimage",
-      "url": "https://downloads.tenzen.studio/folio-studio/stable/linux/0.1.20/Folio-Studio-0.1.20-linux-x64.AppImage",
-      "hash": "sha256-Uq7EVdmRLCxqKzEBttZ+EOZ91eTbLoj4XEDJ2ggXFwg="
+      "url": "https://downloads.tenzen.studio/folio-studio/stable/linux/0.1.18/Folio-Studio-0.1.18-linux-x64.AppImage",
+      "hash": "sha256-cnNduxSgHhymJJ8zLBsRw3skPpALL5/YiMg0O2G6Jpc="
     }
   }
 }

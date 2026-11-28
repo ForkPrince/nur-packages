@@ -12,10 +12,6 @@
       "file": "craft-anything-{version}-macos-universal.dmg",
       "hash": "sha256-u7d30iGk/+aTMjwbbmJfAucb+gTXTTKl1QxFQmVe1mQ="
     },
-    "x86_64-darwin": {
-      "file": "craft-anything-{version}-macos-universal.dmg",
-      "hash": "sha256-u7d30iGk/+aTMjwbbmJfAucb+gTXTTKl1QxFQmVe1mQ="
-    },
     "x86_64-linux": {
       "file": "craft-anything-{version}-linux-x86_64.AppImage",
       "hash": "sha256-fq3eHXSrQsyDiGL+P4MePPPJ+mul4r8E4oJLvEcUYTQ="

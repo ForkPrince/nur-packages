@@ -20,10 +20,6 @@
     "aarch64-darwin": {
       "file": "Sonixd-{version}-mac-arm64.zip",
       "hash": "sha256-ZcMX7r4IhTQsMCgznwvkmRraaSvKXZmOUQThMDmEydU="
-    },
-    "x86_64-darwin": {
-      "file": "Sonixd-{version}-mac-x64.zip",
-      "hash": "sha256-wGO+dsErp/btzneaihg0k0NCR/roMoo2clkRS5ucoSo="
     }
   }
 }

@@ -6,14 +6,8 @@
     "skip_prerelease": true
   },
   "version": "33.0.3",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "OBS-Studio-{version}-macOS-Apple.dmg",
-      "hash": "sha256-kiEoc7b4TFQoUgPKw/hGWQrADfrXazEs8mYQD/Xt8Mg="
-    },
-    "x86_64-darwin": {
-      "file": "OBS-Studio-{version}-macOS-Intel.dmg",
-      "hash": "sha256-RSaXI9EmVWNSTLPWNf4JCgsOEQTjousC7lNVvRZ0KQM="
-    }
+  "asset": {
+    "file": "OBS-Studio-{version}-macOS-Apple.dmg",
+    "hash": "sha256-kiEoc7b4TFQoUgPKw/hGWQrADfrXazEs8mYQD/Xt8Mg="
   }
 }

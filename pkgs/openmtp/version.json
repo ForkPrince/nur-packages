@@ -7,14 +7,8 @@
     "tag_prefix": "v"
   },
   "version": "3.3.0",
-  "platforms": {
-    "aarch64-darwin": {
-      "file": "openmtp-{version}-mac-arm64.zip",
-      "hash": "sha256-ccjqmn76Cjm/RD5W95qIwrIGjZDWFHYdwnWEgW0fZO4="
-    },
-    "x86_64-darwin": {
-      "file": "openmtp-{version}-mac-x64.zip",
-      "hash": "sha256-V0D5P/QP/CwFLH+YuYFQ2I8fOEig1VqHpHTghDuAtAc="
-    }
+  "asset": {
+    "file": "openmtp-{version}-mac-arm64.zip",
+    "hash": "sha256-ccjqmn76Cjm/RD5W95qIwrIGjZDWFHYdwnWEgW0fZO4="
   }
 }

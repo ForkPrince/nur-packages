@@ -4,27 +4,22 @@
     "type": "redirect",
     "version_regex": "([0-9]+\\.[0-9]+\\.[0-9]+)"
   },
-  "version": "0.1.45",
+  "version": "0.1.43",
   "platforms": {
     "aarch64-darwin": {
       "redirect_url": "https://tenzen.studio/api/v1/light-studio/download?platform=darwin&arch=arm64&kind=dmg",
-      "url": "https://downloads.tenzen.studio/light-studio/stable/darwin/0.1.45/Light-Studio-0.1.45-mac-arm64.dmg",
-      "hash": "sha256-x1KM2VfKSvabkTX877JDVR4nhDXDqnBdx1hJzyMY5lY="
-    },
-    "x86_64-darwin": {
-      "redirect_url": "https://tenzen.studio/api/v1/light-studio/download?platform=darwin&arch=x64&kind=dmg",
-      "url": "https://downloads.tenzen.studio/light-studio/stable/darwin/0.1.45/Light-Studio-0.1.45-mac-x64.dmg",
-      "hash": "sha256-48Bwibq7AeUhbyxDu4uhmEsTMSJvHBw6CaTxVm8SXnU="
+      "url": "https://downloads.tenzen.studio/light-studio/stable/darwin/0.1.43/Light-Studio-0.1.43-mac-arm64.dmg",
+      "hash": "sha256-lLSFi0W/07DuFl+FZPOCuwVkxR8VBOZeHQnUBDMK+lo="
     },
     "aarch64-linux": {
       "redirect_url": "https://tenzen.studio/api/v1/light-studio/download?platform=linux&arch=arm64&kind=appimage",
-      "url": "https://downloads.tenzen.studio/light-studio/stable/linux/0.1.45/Light-Studio-0.1.45-linux-arm64.AppImage",
-      "hash": "sha256-pYLltSWKFxTi+KfN1aVR3vQ/Og1w8ZLG5yc0hIqziy0="
+      "url": "https://downloads.tenzen.studio/light-studio/stable/linux/0.1.43/Light-Studio-0.1.43-linux-arm64.AppImage",
+      "hash": "sha256-C1Ct2OsxBIt5RbFFRJBg5iziSBhAGeE3PtQwugqTQrA="
     },
     "x86_64-linux": {
       "redirect_url": "https://tenzen.studio/api/v1/light-studio/download?platform=linux&arch=x64&kind=appimage",
-      "url": "https://downloads.tenzen.studio/light-studio/stable/linux/0.1.45/Light-Studio-0.1.45-linux-x64.AppImage",
-      "hash": "sha256-5XEg/KdcEDXXhD8oOPqQSkpl0oWH6xnr64GbrqxMOlg="
+      "url": "https://downloads.tenzen.studio/light-studio/stable/linux/0.1.43/Light-Studio-0.1.43-linux-x64.AppImage",
+      "hash": "sha256-YtkhUV45NyryL1Io9XSXMagXhFrb7XGUM18snrl8nHQ="
     }
   }
 }

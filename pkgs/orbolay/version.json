@@ -12,10 +12,6 @@
       "file": "orbolay-aarch64-apple-darwin.app.zip",
       "hash": "sha256-4Zd56NpWPgqlOXuVVkN01EVDBWoQ7h9/VcRXQ0ECuM8="
     },
-    "x86_64-darwin": {
-      "file": "orbolay-x86_64-apple-darwin.app.zip",
-      "hash": "sha256-Siwq2hTPYsdPAnAGk/UnUUZfgx/yF0mAEXY/6cTLsqc="
-    },
     "x86_64-linux": {
       "file": "orbolay-x86_64-unknown-linux-gnu.AppImage",
       "hash": "sha256-YCvf5kOSABzeiQpzOqcHVEHlZLskw+fF7lszsOMZ8cI="

@@ -1,0 +1,14 @@
+{
+  "name": "Skykeep",
+  "source": {
+    "type": "github-release",
+    "repo": "YashwanthKamireddi/Skykeep",
+    "skip_prerelease": true,
+    "tag_prefix": "v"
+  },
+  "asset": {
+    "file": "Skykeep_{version}_amd64.AppImage"
+  },
+  "version": "0.1.46",
+  "hash": "sha256-ZccMdfUanbgoYsOxVH3h0F/Via0J/RTgmvz5RkOOPSQ="
+}

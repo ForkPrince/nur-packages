@@ -1,7 +1,16 @@
 function slug(text) {
-  return decodeURIComponent(text.split("/").pop() || "")
-    .replace(/[\s%]+/g, "-")
+  let name = text.split("/").pop() || "";
+
+  try {
+    name = decodeURIComponent(name);
+  } catch {}
+
+  name = name
+    .replace(/[^a-zA-Z0-9+._?=-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
     .toLowerCase();
+
+  return name === "." || name === ".." ? "" : name;
 }
 
 function apply(template, substitutions) {

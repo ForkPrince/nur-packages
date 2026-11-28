@@ -7,14 +7,12 @@
 }: let
   ver = lib.helper.read ./version.json;
   platform = stdenvNoCC.hostPlatform.system;
-
-  src = fetchurl (lib.helper.getPlatform platform ver);
-  inherit (ver) version;
 in
   stdenvNoCC.mkDerivation {
     pname = "wg-nord";
 
-    inherit version src;
+    src = fetchurl (lib.helper.getPlatform platform ver);
+    inherit (ver) version;
 
     nativeBuildInputs = [unzip];
 

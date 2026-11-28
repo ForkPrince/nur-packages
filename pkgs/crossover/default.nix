@@ -1,23 +1,9 @@
-{
-  stdenvNoCC,
-  fetchurl,
-  unzip,
-  lib,
-}: let
-  ver = lib.helper.read ./version.json;
-in
-  stdenvNoCC.mkDerivation (lib.helper.mkDarwin {
-    pname = "crossover";
-    inherit (ver) version;
+# pname = "crossover";
+# description = "deprecated, use crossover from nixpkgs 26.11 or unstable instead";
+# homepage = "https://www.codeweavers.com/products/crossover-mac";
+{...}:
+throw ''
+  crossover is deprecated and has been removed from this repository.
 
-    src = fetchurl (lib.helper.getSingle ver);
-
-    nativeBuildInputs = [unzip];
-
-    meta = {
-      description = "Tool to run Windows software";
-      homepage = "https://www.codeweavers.com/products/crossover-mac";
-      maintainers = with lib.maintainers; [Prinky];
-      license = lib.licenses.unfree;
-    };
-  })
+  Use crossover from nixpkgs (26.11 or unstable) instead: pkgs.crossover
+''

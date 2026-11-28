@@ -13,11 +13,6 @@
       "hash": "sha256-yPyNd4EjM6VhfbO3WINrF+P3ZzAc+r7RKc3/O/7YkrY=",
       "unpack": true
     },
-    "x86_64-darwin": {
-      "file": "StreamNook.app.tar.gz",
-      "hash": "sha256-yPyNd4EjM6VhfbO3WINrF+P3ZzAc+r7RKc3/O/7YkrY=",
-      "unpack": true
-    },
     "x86_64-linux": {
       "url": "https://web.archive.org/web/20261007225048/https://streamnook.app/download/linux",
       "hash": "sha256-LXdJ4HuOFhm0XUEj8M8F4FIlTvhuHTwtZJsbxeVa8KY="
