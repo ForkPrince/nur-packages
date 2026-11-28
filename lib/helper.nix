@@ -11,8 +11,11 @@
   sanitizeName = name: let
     allowed = lib.stringToCharacters "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+._?=-";
     decoded = builtins.replaceStrings [" " "%20"] ["-" "-"] name;
-    sanitized = lib.concatMapStrings (c: if builtins.elem c allowed then c else "-")
-      (lib.stringToCharacters decoded);
+    sanitized = lib.concatMapStrings (c:
+      if builtins.elem c allowed
+      then c
+      else "-")
+    (lib.stringToCharacters decoded);
   in
     lib.concatStringsSep "-" (builtins.filter (s: builtins.isString s && s != "") (builtins.split "-" sanitized));
 
@@ -25,7 +28,9 @@
   extractName = url: let
     name = sanitizeName (baseNameOf (builtins.elemAt (lib.splitString "?" url) 0));
   in
-    if name == "" then "download" else name;
+    if name == ""
+    then "download"
+    else name;
 
   substitute = {
     version,
@@ -294,6 +299,33 @@
         // meta;
     };
 
+  extractAppImageDwarfs = {
+    pname,
+    version,
+    src,
+    ...
+  }:
+    pkgs.stdenvNoCC.mkDerivation {
+      name = "${pname}-${version}-extracted";
+      inherit src;
+      dontUnpack = true;
+      nativeBuildInputs = [pkgs.dwarfs];
+
+      buildPhase = ''
+        runHook preBuild
+        mkdir -p contents
+        dwarfsextract --skip-devices --skip-specials -i "$src" -o "$PWD/contents"
+        runHook postBuild
+      '';
+
+      installPhase = ''
+        runHook preInstall
+        mkdir -p "$out"
+        cp -a contents/. "$out/"
+        runHook postInstall
+      '';
+    };
+
   mkAppImage = {
     pname,
     version,
@@ -313,8 +345,9 @@
     profile ? "",
     passthru ? {},
     extraPkgs ? [],
+    extractor ? pkgs.appimageTools.extract,
   }: let
-    contents = pkgs.appimageTools.extract {inherit pname version src;};
+    contents = extractor {inherit pname version src;};
 
     desktopItem = pkgs.makeDesktopItem ({
         name = desktopId;
@@ -324,8 +357,10 @@
       // lib.optionalAttrs (startupWMClass != null) {inherit startupWMClass;}
       // extraDesktopItem);
   in
-    pkgs.appimageTools.wrapType2 {
-      inherit pname version src meta extraBwrapArgs profile passthru;
+    pkgs.appimageTools.wrapAppImage {
+      inherit pname version src meta extraBwrapArgs profile contents;
+
+      passthru = {inherit src;} // passthru;
 
       extraPkgs = _: extraPkgs;
 
