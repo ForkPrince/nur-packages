@@ -6,19 +6,19 @@
     "skip_prerelease": true,
     "tag_prefix": "v"
   },
-  "version": "1.2.8",
+  "version": "1.2.9",
   "platforms": {
     "aarch64-darwin": {
       "file": "Prism_{version}_aarch64.dmg",
-      "hash": "sha256-AwvyUoRgpbY0/BrAWrupuTTxghTjAG9/aPpobN6Ay7I="
+      "hash": "sha256-5Bl8z3K4Gi4kfHCtHaRutr1oYtS9dYAppUzlQABK5IE="
     },
     "x86_64-darwin": {
       "file": "Prism_{version}_x64.dmg",
-      "hash": "sha256-vyt3oXfCShXYbAxvpOCtlC/ujIbUWV56vGqKsZsFjx4="
+      "hash": "sha256-azAkGsRa0EKfaQEeJvPoyPpM5e6a7O26IKlaU8J0eBs="
     },
     "x86_64-linux": {
       "file": "Prism_{version}_amd64.AppImage",
-      "hash": "sha256-o+sHZZtGUkX4vgdIVUz+DHXBrsT9q+bjmabnSMpAqVY="
+      "hash": "sha256-5nyYxZAGFGCBVZnWaGgf01P2jVC9UUL5zKKuzET054U="
     }
   }
 }
