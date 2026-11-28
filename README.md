@@ -167,6 +167,7 @@ This repository contains three types of packages:
 | [`steam`](pkgs/steam/default.nix) | [steam](https://store.steampowered.com/), digital distribution platform |
 | [`steamac`](pkgs/steamac/default.nix) | [steamac](https://github.com/fxgl/steamac), valve's official ARM64 SteamOS in a lightweight VM on Apple Silicon |
 | [`streamnook`](pkgs/streamnook/default.nix) | [streamnook](https://streamnook.app), a native desktop client for Twitch, Kick and YouTube multi-streaming |
+| [`stud`](pkgs/stud/default.nix) | [stud](https://github.com/CatPieLeaf/Stud), an Unofficial Open-Source Roblox Launcher for Linux |
 | [`sublime-text`](pkgs/sublime-text/default.nix) | [sublime-text](https://www.sublimetext.com/), sophisticated text editor for code, markup and prose |
 | [`supercharge`](pkgs/supercharge/default.nix) | [supercharge](https://sindresorhus.com/supercharge), elevate your Mac experience |
 | [`sysbar`](pkgs/sysbar/default.nix) | [sysbar](https://github.com/System64fumo/sysbar), modular status bar for Wayland written in gtkmm4 |

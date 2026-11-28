@@ -1,0 +1,14 @@
+{
+  "name": "Stud",
+  "source": {
+    "type": "github-release",
+    "repo": "CatPieLeaf/Stud",
+    "skip_prerelease": true
+  },
+  "asset": {
+    "file": "stud_{version}_amd64.deb",
+    "unpack": false
+  },
+  "version": "2.0.8",
+  "hash": "sha256-mdgpmDnPCV4aVeSlZKp5CL8A5Rdn0l+bLlqouEzQOug="
+}

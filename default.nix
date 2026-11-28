@@ -24,6 +24,7 @@
     cordial = lib.callPackage ./pkgs/cordial {};
     skykeep = lib.callPackage ./pkgs/skykeep {};
     sysbar = lib.callPackage ./pkgs/sysbar {};
+    stud = lib.callPackage ./pkgs/stud {};
 
     tinywiibackupmanager = lib.callPackage ./pkgs/tinywiibackupmanager {};
     note-block-studio = lib.callPackage ./pkgs/note-block-studio {};
